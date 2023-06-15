@@ -6,14 +6,21 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+
+    extend: {
+      spacing: {
+        '120': '30rem',
+      }
+    },
     colors: {
-      'white': 'white',
+      'white': '#eeeff2',
       'blue': '#0092ca',
       'principal': '#191e27',
+      'darkButton': '#4e5d78',
       'silver': '#dcdfe4',
       'secondary': '#212833',
       'darkBorder': '#4b5771',
+      'transparent': '#00000000',
     }
   },
   plugins: [],

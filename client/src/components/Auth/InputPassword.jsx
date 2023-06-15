@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { LockPassword, Password, UnlockPassword } from "../icons";
-
+import { useState } from 'react';
+import { LockPassword, Password, UnlockPassword } from '../../icons'
 
 const InputPassword = (props) => {
 
@@ -21,7 +20,7 @@ const InputPassword = (props) => {
         type={`${view ? 'text' : 'password'}`}
         name="password"
         placeholder="Password"
-        className="w-[78%] p-2 outline-none rounded-xl dark:bg-secondary dark:text-white"
+        className="w-[78%] p-2 outline-none rounded-xl dark:bg-secondary dark:text-white tracking-wider"
         {...props}
       />
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const InputButton = ({ children }) => {
   return (
     <button
-      className="w-full bg-blue text-white py-3 rounded-lg disabled:bg-[#4e5d78]"
+      className="w-full bg-blue text-white py-3 font-bold rounded-lg"
       disabled={false}
     >
       {children}

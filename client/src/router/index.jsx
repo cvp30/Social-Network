@@ -1,21 +1,41 @@
 import { createBrowserRouter } from "react-router-dom";
 import LandingPage from '../layouts/LandingPage'
-import SignIn from "../pages/SignIn";
-import SignUp from "../pages/SignUp";
+import Auth from "../pages/Auth/Auth";
+import Home from "../pages/Home/Home";
+import Protected from "../components/Protected";
+import Navigation from "../layouts/Navigation";
+
+import MainPage from "../layouts/MainPage";
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <LandingPage />,
+    element: <MainPage />,
     children: [
       {
-        index: true,
-        element: <SignIn />,
-      },
-      {
-        path: 'signup',
-        element: <SignUp />,
+        path: 'home',
+        element: <Protected> <Navigation /> </Protected>,
       }
     ]
   }
+  // {
+  //   path: '/',
+  //   element: <LandingPage />,
+  //   children: [
+  //     {
+  //       index: true,
+  //       element: <Auth />,
+  //     },
+  //     {
+  //       path: 'home',
+  //       element: <Protected> <Navigation /> </Protected>,
+  //       children: [
+  //         {
+  //           index: true,
+  //           element: <Home />
+  //         }
+  //       ]
+  //     },
+  //   ]
+  // },
 ]);

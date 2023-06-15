@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
+import { EmailIcon } from '../../icons';
 
-const InputEmail = ({ children, ...props }) => {
+const InputEmail = (props) => {
   return (
     <div className="flex h-12 border border-silver dark:border-darkBorder rounded-xl" >
       <div className="h-full w-[11%] flex justify-center items-center">
-        {children}
+        <EmailIcon className="w-6 h-6" />
       </div>
 
       <input
@@ -12,19 +12,13 @@ const InputEmail = ({ children, ...props }) => {
         type="email"
         name="email"
         pattern='^[^\s@]+@[^\s@]+\.[^\s@]+$'
-        className="w-[89%] p-2 outline-none rounded-xl dark:bg-secondary dark:text-white"
+        className="w-[89%] p-2 outline-none rounded-xl dark:bg-secondary dark:text-white tracking-wider"
         {...props}
       />
     </div >
 
 
   )
-}
-
-InputEmail.propTypes = {
-  placeholder: PropTypes.string,
-  children: PropTypes.any,
-  props: PropTypes.any,
 }
 
 export default InputEmail;

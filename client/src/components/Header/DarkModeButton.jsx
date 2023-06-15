@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Moon, Sun } from "../icons";
+import { Moon, Sun } from "../../icons";
 
 const DarkModeButton = () => {
   const [darkMode, setDarkMode] = useState(false);

@@ -1,21 +1,17 @@
-import { Outlet } from "react-router-dom";
-import IconApp from "../assets/IconApp.png"
-import DarkModeButton from "../components/DarkModeButton";
+// import { Outlet } from "react-router-dom";
+import Header from "../components/Header/Header";
+
 
 const LandingPage = () => {
   return (
-    <section className="flex flex-col gap-4">
-      <header className="flex justify-between items-center gap-0 w-full h-fit mx-auto max-w-screen-2xl">
-        <div className="flex">
-          <img className="w-10 h-8" src={IconApp} alt="" />
-          <h4 className="text-blue">MeetSocial</h4>
-        </div>
+    <nav className=" flex flex-col gap-4 w-full h-fit">
 
-        <DarkModeButton />
-      </header>
 
-      <Outlet />
-    </section>
+
+      <Header />
+
+      {/* <Outlet /> */}
+    </nav>
   )
 }
 
