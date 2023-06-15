@@ -1,4 +1,4 @@
-import { EmailIcon } from '../../icons';
+import { EmailIcon } from '../../../icons';
 
 const InputEmail = (props) => {
   return (

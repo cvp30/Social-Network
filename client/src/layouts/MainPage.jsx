@@ -1,13 +1,14 @@
-import Auth from "../pages/Auth/Auth";
-import { UserAuth } from "../contexts/AuthContext";
-import Navigation from "./Navigation";
+import { Outlet } from "react-router-dom";
+import Header from "../components/Header/Header";
 
 const MainPage = () => {
-  const { user } = UserAuth();
-  console.log(user)
-
-  return user?.email ? <Navigation /> : <Auth />;
-
+  return (
+    <nav className=" flex flex-col gap-4 w-full h-fit">
+      <Header />
+      <p>barra ladito</p>
+      <Outlet />
+    </nav>
+  )
 }
 
 export default MainPage;

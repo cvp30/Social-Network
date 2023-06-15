@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { UsernameAvatar } from '../../icons';
+import { UsernameAvatar } from '../../../icons';
 
 const InputText = () => {
   return (

@@ -1,12 +1,12 @@
-import { Link, useNavigate } from "react-router-dom";
-import InputPassword from "../../components/Auth/InputPassword";
-import InputEmail from "../../components/Auth/InputEmail";
+import { Link, useNavigate, Navigate } from "react-router-dom";
+import InputPassword from "./components/InputPassword";
+import InputEmail from "./components/InputEmail";
 import { Toaster, toast } from "react-hot-toast";
 import InputButton from "../../components/InputButton";
 import { useEffect, useState } from "react";
 import { validateSignIn, validateSignUp } from "../../utils";
-import InputText from "../../components/Auth/InputText";
-import SocialButtons from "../../components/Auth/SocialButtons";
+import InputText from "./components/InputText";
+import SocialButtons from "./components/SocialButtons";
 import { UserAuth } from "../../contexts/AuthContext";
 
 const Auth = () => {
@@ -45,14 +45,16 @@ const Auth = () => {
 
   }
 
-  // useEffect(() => {
-  //   if (user !== null) navigate('/home')
-  // }, [user, navigate])
+  console.log(user)
+
+  useEffect(() => {
+    if (Object.keys(user).length) navigate('/')
+  }, [user, navigate])
 
 
-  // if (user !== null) {
-  //   return null;
-  // }
+  if (Object.keys(user).length) {
+    <Navigate to="/" replace={true} />;
+  }
 
 
   return (

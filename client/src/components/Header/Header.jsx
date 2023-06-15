@@ -16,30 +16,23 @@ const Header = () => {
         <h4 className=" text-blue">MeetSocial</h4>
       </Link>
 
-      {
-        user?.email ?
-          (
-            <div className="h-full grow flex items-center lg:justify-between justify-end gap-1">
-              <div className="hidden lg:block w-fit lg:w-1/3 h-full">
-                <SearchInput />
-              </div>
+      <div className="h-full grow flex items-center lg:justify-between justify-end gap-1">
+        <div className="hidden lg:block w-fit lg:w-1/3 h-full">
+          <SearchInput />
+        </div>
 
-              <div className="lg:hidden w-fit h-full flex items-center">
-                <SearchInputMobile />
-              </div>
+        <div className="lg:hidden w-fit h-full flex items-center">
+          <SearchInputMobile />
+        </div>
 
-              <div className="h-fit grow lg:w-2/3 flex justify-end items-center">
-                <User
-                  username={user.displayName}
-                  img={user.photoURL}
-                />
-              </div>
+        <div className="h-fit grow lg:w-2/3 flex justify-end items-center">
+          <User
+            username={user.displayName}
+            img={user.photoURL}
+          />
+        </div>
 
-            </div>
-          )
-          :
-          ''
-      }
+      </div>
     </header>
   )
 }

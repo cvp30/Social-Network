@@ -24,10 +24,10 @@ const User = ({ username, img }) => {
 
   return (
     <div onClick={() => setIsOpen(!isOpen)} ref={userOptions} className="h-12 w-fit relative flex items-center justify-center gap-2">
-      <div className='h-full flex justify-center items-center dark:text-white list-none'>
+      <button className='h-full flex justify-center items-center dark:text-white list-none'>
         <img className='h-full aspect-square rounded-full object-cover' src={img} alt="user" />
         <ArrowDown />
-      </div>
+      </button>
       <UserOptions username={username} isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   )

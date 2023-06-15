@@ -1,6 +1,6 @@
 import { toast } from "react-hot-toast";
-import { GithubLogo, GoogleLogo } from "../../icons"
-import { UserAuth } from "../../contexts/AuthContext";
+import { GithubLogo, GoogleLogo } from "../../../icons"
+import { UserAuth } from "../../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const SocialButtons = () => {
@@ -11,7 +11,7 @@ const SocialButtons = () => {
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
-      navigate('home');
+      navigate('/');
     } catch (error) {
       toast.error(error, {
         duration: 3000,
@@ -22,7 +22,7 @@ const SocialButtons = () => {
   const handleGithubSignIn = async () => {
     try {
       await githubSignIn();
-      navigate('home');
+      navigate('/');
     } catch (error) {
       toast.error(error, {
         duration: 3000,

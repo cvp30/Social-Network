@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LockPassword, Password, UnlockPassword } from '../../icons'
+import { LockPassword, Password, UnlockPassword } from '../../../icons'
 
 const InputPassword = (props) => {
 
