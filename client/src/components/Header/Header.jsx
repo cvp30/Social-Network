@@ -1,9 +1,8 @@
-import IconApp from "../../assets/IconApp.png"
-import { Link } from "react-router-dom";
-import { UserAuth } from "../../contexts/AuthContext";
 import SearchInput from "../SearchInput";
 import User from "./User";
 import SearchInputMobile from "./SearchInputMobile";
+import { UserAuth } from "../../contexts/AuthenticationContext";
+import Logo from "../Logo";
 
 
 const Header = () => {
@@ -11,10 +10,7 @@ const Header = () => {
 
   return (
     <header className="flex justify-between items-center  w-full h-12 mx-auto max-w-screen-2xl">
-      <Link to="/" className="w-36 lg:w-64 h-full flex items-center gap-2 ">
-        <img className="w-10 h-8 hidden lg:block" src={IconApp} alt="" />
-        <h4 className=" text-blue">MeetSocial</h4>
-      </Link>
+      <Logo />
 
       <div className="h-full grow flex items-center lg:justify-between justify-end gap-1">
         <div className="hidden lg:block w-fit lg:w-1/3 h-full">
@@ -27,8 +23,8 @@ const Header = () => {
 
         <div className="h-fit grow lg:w-2/3 flex justify-end items-center">
           <User
-            username={user.displayName}
-            img={user.photoURL}
+            username={user?.displayName}
+            img={user?.photoURL}
           />
         </div>
 

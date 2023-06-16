@@ -1,7 +1,7 @@
 import { toast } from "react-hot-toast";
 import { GithubLogo, GoogleLogo } from "../../../icons"
-import { UserAuth } from "../../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { UserAuth } from "../../../contexts/AuthenticationContext";
 
 const SocialButtons = () => {
 

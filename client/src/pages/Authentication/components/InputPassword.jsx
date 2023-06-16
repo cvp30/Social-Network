@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { LockPassword, Password, UnlockPassword } from '../../../icons'
+import { FormUser } from '../../../contexts/FormContext';
 
-const InputPassword = (props) => {
+const InputPassword = () => {
 
+  const { form, handleChange } = FormUser()
   const [view, setView] = useState(false);
 
   const handleView = (event) => {
@@ -21,7 +23,8 @@ const InputPassword = (props) => {
         name="password"
         placeholder="Password"
         className="w-[78%] p-2 outline-none rounded-xl dark:bg-secondary dark:text-white tracking-wider"
-        {...props}
+        value={form.password}
+        onChange={handleChange}
       />
 
       <button

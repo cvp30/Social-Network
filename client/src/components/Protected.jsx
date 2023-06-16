@@ -1,18 +1,21 @@
 import PropTypes from 'prop-types';
-import { useNavigate, Navigate } from "react-router-dom"
-import { UserAuth } from "../contexts/AuthContext";
-import { useEffect } from "react";
+import { Navigate } from "react-router-dom"
+
+// import { useEffect } from "react";
+import { UserAuth } from '../contexts/AuthenticationContext';
 
 const Protected = ({ children }) => {
 
-  const redirect = useNavigate();
+  // const redirect = useNavigate();
   const { user } = UserAuth();
 
-  useEffect(() => {
-    if (!Object.keys(user).length) redirect('/auth')
-  }, [user, redirect])
+  if (!user) return <Navigate to="/auth" replace={true} />
 
-  if (!Object.keys(user).length) return <Navigate to="/auth" replace={true} />;
+  // useEffect(() => {
+  //   if (user?.email !== null) redirect('/auth')
+  // }, [user, redirect])
+
+  // if (user?.email != null) return null;
 
   return (
     <>

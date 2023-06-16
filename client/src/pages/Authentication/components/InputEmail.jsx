@@ -1,6 +1,12 @@
+import { FormUser } from '../../../contexts/FormContext';
 import { EmailIcon } from '../../../icons';
 
-const InputEmail = (props) => {
+const InputEmail = () => {
+
+  const {
+    form,
+    handleChange,
+  } = FormUser()
   return (
     <div className="flex h-12 border border-silver dark:border-darkBorder rounded-xl" >
       <div className="h-full w-[11%] flex justify-center items-center">
@@ -13,7 +19,8 @@ const InputEmail = (props) => {
         name="email"
         pattern='^[^\s@]+@[^\s@]+\.[^\s@]+$'
         className="w-[89%] p-2 outline-none rounded-xl dark:bg-secondary dark:text-white tracking-wider"
-        {...props}
+        value={form.email}
+        onChange={handleChange}
       />
     </div >
 

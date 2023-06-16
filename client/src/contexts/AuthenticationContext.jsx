@@ -7,38 +7,35 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth"
-import { auth } from '../services/firebase/config';
+import { Auth } from '../services/firebase/config';
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
 
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null)
 
-  // AUTH  WITH GOOGLE -----------------------------
+  // ------------GOOGLE - GITHUB SIGN IN -----------------
 
   const googleSignIn = () => {
     const googleProvider = new GoogleAuthProvider();
-    signInWithPopup(auth, googleProvider)
+    signInWithPopup(Auth, googleProvider);
   }
 
-  const googleSignOut = () => {
-    signOut(auth);
-  }
-  // -----------------------------------------------
-
-  // AUTH WITH FACEBOOK ------------------------------
   const githubSignIn = () => {
     const githubProvider = new GithubAuthProvider();
-    signInWithPopup(auth, githubProvider)
+    signInWithPopup(Auth, githubProvider)
   }
 
 
+  // ----------------- SIGN OUT --------------------
+  const SignOut = () => {
+    signOut(Auth);
+  }
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currUser => {
-      if (currUser) setUser(currUser);
-      // console.log(currUser)
+    const unsubscribe = onAuthStateChanged(Auth, currUser => {
+      currUser ? setUser(currUser) : setUser(null);
     })
 
     return () => {
@@ -46,16 +43,13 @@ export const AuthContextProvider = ({ children }) => {
     }
   }, [])
 
-
   return (
-    <AuthContext.Provider
-      value={{
-        googleSignIn,
-        googleSignOut,
-        githubSignIn,
-        user,
-      }}
-    >
+    <AuthContext.Provider value={{
+      googleSignIn,
+      githubSignIn,
+      SignOut,
+      user,
+    }}>
       {children}
     </AuthContext.Provider>
   )
@@ -66,5 +60,5 @@ export const UserAuth = () => {
 }
 
 AuthContextProvider.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.element,
 }

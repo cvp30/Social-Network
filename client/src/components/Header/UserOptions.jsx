@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { LogOut, Moon, Sun } from "../../icons";
-import { UserAuth } from "../../contexts/AuthContext";
 import OptionButton from "./OptionButton";
 import { useEffect, useState } from "react";
+import { UserAuth } from "../../contexts/AuthenticationContext";
 
 
 const UserOptions = ({ username, isOpen, setIsOpen }) => {
 
-  const { googleSignOut } = UserAuth();
+  const { SignOut } = UserAuth();
 
   const [isDarkMode, setIsDarkMode] = useState(
     Boolean(localStorage.getItem('dark'))
@@ -30,7 +30,7 @@ const UserOptions = ({ username, isOpen, setIsOpen }) => {
 
   const handleSignOut = async () => {
     try {
-      await googleSignOut();
+      await SignOut();
     } catch (error) {
       console.log(error)
     }

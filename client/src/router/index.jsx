@@ -1,13 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import Auth from "../pages/Auth/Auth";
+import Authentication from "../pages/Authentication/Authentication";
+import { FormContextProvider } from "../contexts/FormContext";
 import Home from "../pages/Home/Home";
-import Protected from "../components/Protected";
 import MainPage from "../layouts/MainPage";
+import Protected from "../components/Protected";
 
 export const router = createBrowserRouter([
+
   {
     path: '/auth',
-    element: <Auth />,
+    element: <FormContextProvider> <Authentication /> </FormContextProvider>,
   },
   {
     path: '/',
@@ -19,25 +21,4 @@ export const router = createBrowserRouter([
       }
     ]
   }
-
-  // {
-  //   path: '/',
-  //   element: <LandingPage />,
-  //   children: [
-  //     {
-  //       index: true,
-  //       element: <Auth />,
-  //     },
-  //     {
-  //       path: 'home',
-  //       element: <Protected> <Navigation /> </Protected>,
-  //       children: [
-  //         {
-  //           index: true,
-  //           element: <Home />
-  //         }
-  //       ]
-  //     },
-  //   ]
-  // },
 ]);

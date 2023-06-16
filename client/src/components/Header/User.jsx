@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 
 const User = ({ username, img }) => {
 
+  console.log({ username, img })
   const userOptions = useRef()
   const [isOpen, setIsOpen] = useState(false);
 
