@@ -13,6 +13,7 @@ export default {
       }
     },
     colors: {
+      'lightWhite': 'white',
       'white': '#eeeff2',
       'blue': '#0092ca',
       'principal': '#191e27',

@@ -6,7 +6,7 @@
 @layer components {
   html {
     font-family: 'Roboto', sans-serif;
-    padding: 1rem;
+    padding: 0rem .5rem;
     box-sizing: border-box;
     color: #4b5771;
     font-size: .9375rem;
@@ -16,6 +16,10 @@
     background-color: #191e27;
     /* color: #eeeff2; */
     /* transition: all .3s ease-in-out; */
+  }
+
+  .contacts {
+    height: calc(100vh - 6rem);
   }
 
 }

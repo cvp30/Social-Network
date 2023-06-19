@@ -11,7 +11,7 @@ const UserOptions = ({ username, isOpen, setIsOpen }) => {
   const { SignOut } = UserAuth();
 
   const [isDarkMode, setIsDarkMode] = useState(
-    Boolean(localStorage.getItem('dark'))
+    localStorage.getItem('dark') === "true"
   );
 
   const setLocalStorage = () => {

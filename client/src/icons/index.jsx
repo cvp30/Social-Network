@@ -274,3 +274,123 @@ export const Close = (props) => {
     </svg>
   )
 }
+
+export const Home = () => {
+  return (
+    <svg width={20} height={20} fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 3H4a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1Z" />
+      <path d="M9 14H4a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1Z" />
+      <path d="M20 3h-5a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1Z" />
+      <path d="M20 14h-5a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1Z" />
+    </svg>
+  )
+}
+
+export const Community = () => {
+  return (
+    <svg width={20} height={20} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
+      <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+      <path d="M16 3.133a4 4 0 0 1 0 7.75" />
+      <path d="M21 20.998v-2a4 4 0 0 0-3-3.85" />
+    </svg>
+  )
+}
+
+export const Messages = () => {
+  return (
+    <svg width={20} height={20} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 21V8a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H8l-4 4Z" />
+      <path d="M12 11v.01" />
+      <path d="M8 11v.01" />
+      <path d="M16 11v.01" />
+    </svg>
+  )
+}
+
+export const Notification = () => {
+  return (
+    <svg width={20} height={20} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 5a2 2 0 1 1 4 0 7 7 0 0 1 4 6v3a4 4 0 0 0 2 3H4a4 4 0 0 0 2-3v-3a7 7 0 0 1 4-6" />
+      <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
+    </svg>
+  )
+}
+
+export const Profile = () => {
+  return (
+    <svg width={20} height={20} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
+      <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+    </svg>
+  )
+}
+
+export const Settings = () => {
+  return (
+    <svg width={20} height={20} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.723 1.723 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37 1 .608 2.296.07 2.572-1.065Z" />
+      <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+    </svg>
+  )
+}
+
+export const Contact = () => {
+  return (
+    <svg width={24} height={24} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 6h11" />
+      <path d="M9 12h11" />
+      <path d="M9 18h11" />
+      <path d="M5 6v.01" />
+      <path d="M5 12v.01" />
+      <path d="M5 18v.01" />
+    </svg>
+  )
+}
+
+export const Menu = () => {
+  return (
+    <svg width={24} height={24} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+      <path d="M12 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+      <path d="M19 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+      <path d="M5 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+      <path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+      <path d="M19 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+      <path d="M5 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+      <path d="M12 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+      <path d="M19 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+    </svg>
+  )
+}
+
+export const Video = () => {
+  return (
+    <svg width={18} height={18} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="m15 9.999 4.553-2.276A1 1 0 0 1 21 8.617v6.764a1 1 0 0 1-1.447.894L15 13.999v-4Z" />
+      <path d="M13 6H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2Z" />
+    </svg>
+  )
+}
+
+export const Photo = () => {
+  return (
+    <svg width={18} height={18} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 8h.01" />
+      <path d="M17 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Z" />
+      <path d="m4 14.998 4-4c.456-.439.973-.67 1.5-.67s1.044.231 1.5.67l5 5" />
+      <path d="m14 13.998 1-1c.456-.439.973-.67 1.5-.67s1.044.231 1.5.67l2 2" />
+    </svg>
+  )
+}
+
+export const Feeling = () => {
+  return (
+    <svg width={18} height={18} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" />
+      <path d="M9 10h.01" />
+      <path d="M15 10h.01" />
+      <path d="M9.5 15a3.5 3.5 0 0 0 5 0" />
+    </svg>
+  )
+}
