@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { LogOut, Moon, Sun } from "../../icons";
 import OptionButton from "./OptionButton";
 import { useEffect, useState } from "react";
-import { UserAuth } from "../../contexts/AuthenticationContext";
-
+// import { UserAuth } from "../../contexts/AuthenticationContext";
+import { SignOut } from "../../services/firebase";
 
 const UserOptions = ({ username, isOpen, setIsOpen }) => {
 
-  const { SignOut } = UserAuth();
+  // const { SignOut } = UserAuth();
 
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem('dark') === "true"
@@ -50,7 +50,7 @@ const UserOptions = ({ username, isOpen, setIsOpen }) => {
 
       <Link to="">
         <p>Signed in as</p>
-        <p className='text-xl font-bold'>{username}</p>
+        <p className='w-full text-xl font-bold truncate'>{username}</p>
       </Link>
 
       <hr className='text-darkButton my-3' />

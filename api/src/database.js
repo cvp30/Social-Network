@@ -1,4 +1,4 @@
-const { Sequelize } = require("sequelize");
+const Sequelize = require("sequelize");
 const fs = require("fs");
 const path = require("path")
 require("dotenv").config();
@@ -41,31 +41,31 @@ modelDefiners.forEach(model => model(sequelize));
 const { user, friendship, post, comment } = sequelize.models;
 
 // ENCRYPT PASSWORD USER
-useBcrypt(user, {
-  field: 'password',
-  rounds: 12,
-  compare: 'authenticate',
-})
+// useBcrypt(user, {
+//   field: 'password',
+//   rounds: 12,
+//   compare: 'authenticate',
+// })
 
 // RELATIONS BETWEEN MODELS 
 
 // FRIENDSHIP
-user.belongsToMany(user, { as: 'friend', through: friendship })
+// user.belongsToMany(user, { as: 'friend', through: friendship })
 
-// USER
+// // USER
 user.hasMany(post);
 post.belongsTo(user);
 
-user.hasMany(comment);
-comment.belongsTo(user);
+// user.hasMany(comment);
+// comment.belongsTo(user);
 
 
-// POST
-post.hasMany(comment);
-comment.belongsTo(post);
+// // POST
+// post.hasMany(comment);
+// comment.belongsTo(post);
 
-// COMMENT
-comment.hasMany(comment, { as: 'children', foreignKey: 'parentId' });
-comment.belongsTo(comment, { as: 'parent', foreignKey: 'parentId' });
+// // COMMENT
+// comment.hasMany(comment, { as: 'children', foreignKey: 'parentId' });
+// comment.belongsTo(comment, { as: 'parent', foreignKey: 'parentId' });
 
 module.exports = sequelize;

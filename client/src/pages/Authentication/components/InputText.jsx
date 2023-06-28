@@ -16,8 +16,8 @@ const InputText = () => {
 
       <input
         type="text"
-        name="text"
-        value={form.password}
+        name="username"
+        value={form.username}
         onChange={handleChange}
         placeholder="username"
         className="w-[89%] p-2 outline-none rounded-xl dark:bg-secondary"

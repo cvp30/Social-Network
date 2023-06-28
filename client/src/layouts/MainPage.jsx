@@ -20,10 +20,6 @@ const MainPage = () => {
         <div className="w-80 hidden md:block">
           <Contacts />
         </div>
-
-
-
-
       </div>
     </nav>
   )

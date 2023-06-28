@@ -1,41 +1,36 @@
 import PropTypes from 'prop-types';
 import { createContext, useContext, useEffect, useState } from "react";
-import {
-  GoogleAuthProvider,
-  GithubAuthProvider,
-  onAuthStateChanged,
-  signInWithPopup,
-  signOut,
-} from "firebase/auth"
+import { onAuthStateChanged } from "firebase/auth"
 import { Auth } from '../services/firebase/config';
+// import defaultUser from "../assets/defaultUser.png"
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
 
   const [user, setUser] = useState(null)
+  const [loading, setLoading] = useState(true)
 
-  // ------------GOOGLE - GITHUB SIGN IN -----------------
-
-  const googleSignIn = () => {
-    const googleProvider = new GoogleAuthProvider();
-    signInWithPopup(Auth, googleProvider);
-  }
-
-  const githubSignIn = () => {
-    const githubProvider = new GithubAuthProvider();
-    signInWithPopup(Auth, githubProvider)
-  }
-
-
-  // ----------------- SIGN OUT --------------------
-  const SignOut = () => {
-    signOut(Auth);
-  }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(Auth, currUser => {
-      currUser ? setUser(currUser) : setUser(null);
+      if (currUser) {
+
+        // const UserObj = {
+        //   uid: currUser.uid,
+        //   displayName: currUser.displayName ?? defaultUser,
+        //   email: currUser.email,
+        //   photoURL: currUser.photoURL,
+        //   lastLogin: currUser.reloadUserInfo.lastLoginAt,
+        // }
+
+        setUser(currUser);
+      }
+      else {
+        setUser(null)
+      }
+
+      setLoading(false)
     })
 
     return () => {
@@ -45,10 +40,8 @@ export const AuthContextProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{
-      googleSignIn,
-      githubSignIn,
-      SignOut,
       user,
+      loading,
     }}>
       {children}
     </AuthContext.Provider>

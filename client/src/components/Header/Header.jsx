@@ -6,7 +6,6 @@ import Logo from "../Logo";
 import ContactsMobile from "../Contacts/ContactsMobile";
 import NavbarMobile from "../Navbar/NavbarMobile";
 
-
 const Header = () => {
   const { user } = UserAuth();
 

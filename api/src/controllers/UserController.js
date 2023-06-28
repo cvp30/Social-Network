@@ -1,42 +1,24 @@
-const sequelize = require("../database")
+const sequelize = require("../database");
 
 const { user } = sequelize.models;
 
-
-const userSignUp = async (req, res) => {
-  const { email, username, password } = req.body;
+const UserRegister = async (req, res) => {
+  const { email } = req.body;
 
   try {
-    await user.create({
-      email, username, password
+    const [, created] = await user.findOrCreate({
+      where: {
+        id: email
+      }
     })
 
-    return res.json({ response: "user created!!!" })
+    return res.json({ message: created })
 
   } catch (error) {
-    return res.json(error)
+    return res.json({ message: error })
   }
 }
 
-
-const userSignIn = async (req, res) => {
-  const { email, password } = req.body;
-
-  const userFound = await user.findOne(
-    {
-      where: {
-        email: email
-      }
-    }
-  )
-
-  return userFound === null ?
-    res.json({ response: null })
-    :
-    res.json({ response: userFound.authenticate(password) });
-}
-
 module.exports = {
-  userSignUp,
-  userSignIn,
+  UserRegister,
 }

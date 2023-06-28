@@ -394,3 +394,36 @@ export const Feeling = () => {
     </svg>
   )
 }
+
+export const Like = () => {
+  return (
+    <svg width={22} height={22} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path fillRule="evenodd" d="M12 4.457c5.326-5.475 18.64 4.105 0 16.423C-6.64 8.563 6.675-1.018 12 4.457Z" clipRule="evenodd" />
+    </svg>
+  )
+}
+
+export const Comment = () => {
+  return (
+    <svg width={22} height={22} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22 4.941a2.5 2.5 0 0 0-2.5-2.5h-15a2.5 2.5 0 0 0-2.5 2.5v10a2.5 2.5 0 0 0 2.5 2.5h11.983c.331 0 .649.132.883.367l3.567 3.566A.625.625 0 0 0 22 20.933V4.94ZM6.375 6.191h11.25a.625.625 0 1 1 0 1.25H6.375a.625.625 0 0 1 0-1.25Zm0 3.125h11.25a.625.625 0 1 1 0 1.25H6.375a.625.625 0 0 1 0-1.25Zm0 3.125h6.25a.624.624 0 1 1 0 1.25h-6.25a.625.625 0 0 1 0-1.25Z" />
+    </svg>
+  )
+}
+
+export const Share = () => {
+  return (
+    <svg width={22} height={22} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 14h-2a8.999 8.999 0 0 0-7.968 4.81C3.011 18.54 3 18.27 3 18 3 12.477 7.477 8 13 8V3l10 8-10 8v-5Z" />
+    </svg>
+  )
+}
+
+export const Send = () => {
+  return (
+    <svg width={22} height={22} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1.946 9.313c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638L16.273 22.04c-.15.529-.455.547-.68.045L12 13.998l6-8-8 6-8.054-2.685Z" />
+    </svg>
+  )
+}
+

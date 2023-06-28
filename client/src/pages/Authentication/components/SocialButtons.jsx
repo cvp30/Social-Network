@@ -1,16 +1,15 @@
 import { toast } from "react-hot-toast";
 import { GithubLogo, GoogleLogo } from "../../../icons"
 import { useNavigate } from "react-router-dom";
-import { UserAuth } from "../../../contexts/AuthenticationContext";
+import { GoogleSignIn, githubSignIn } from "../../../services/firebase";
 
 const SocialButtons = () => {
 
   const navigate = useNavigate();
-  const { googleSignIn, githubSignIn } = UserAuth();
 
   const handleGoogleSignIn = async () => {
     try {
-      await googleSignIn();
+      await GoogleSignIn()
       navigate('/');
     } catch (error) {
       toast.error(error, {

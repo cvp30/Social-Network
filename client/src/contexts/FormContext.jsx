@@ -2,12 +2,14 @@ import PropTypes from 'prop-types';
 import { createContext, useContext, useState } from "react";
 import { validateSignIn, validateSignUp } from '../utils';
 import { toast } from 'react-hot-toast';
+// import { UserAuth } from './AuthenticationContext';
 
 
 const FormContext = createContext()
 
 export const FormContextProvider = ({ children }) => {
 
+  // const { EmailSignIn, EmailSignUp } = UserAuth()
   const [isSignIn, setIsSignIn] = useState(true);
 
   const [form, setForm] = useState({
@@ -23,7 +25,7 @@ export const FormContextProvider = ({ children }) => {
     });
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const errors = isSignIn ? validateSignIn(form) : validateSignUp(form);
 
@@ -35,6 +37,12 @@ export const FormContextProvider = ({ children }) => {
         })
       })
     }
+
+    // isSignIn ?
+    //   await EmailSignIn(form)
+    //   :
+    //   await EmailSignUp(form)
+
   }
 
   return (

@@ -6,10 +6,10 @@ import MainPage from "../layouts/MainPage";
 import Protected from "../components/Protected";
 
 export const router = createBrowserRouter([
-
   {
     path: '/auth',
     element: <FormContextProvider> <Authentication /> </FormContextProvider>,
+    // element: <Authentication />,
   },
   {
     path: '/',
