@@ -1,5 +1,5 @@
-import { Outlet } from "react-router-dom";
 import Header from "../components/Header/Header";
+import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import Contacts from "../components/Contacts/Contacts";
 

@@ -1,40 +1,35 @@
 import { Link } from "react-router-dom";
-import { UserAuth } from "../../../contexts/AuthenticationContext";
 import Modal from "./Modal";
 import { Comment, Like, Send, Share } from "../../../icons";
 import Avatar from "../../../assets/defaultUser.png"
+import PropTypes from 'prop-types';
 
-const PostCard = () => {
-  // USUARIO TEMPORAL
-  const { user } = UserAuth()
-
-  const users = Array.from({ length: 5 }, () => ({ ...user }));
-
+const PostCard = ({ image, name, date, description, imagePost, users, comments, shares }) => {
 
   return (
     <article className="w-full h-fit p-4 dark:bg-principal bg-lightWhite rounded-xl flex flex-col gap-4">
       <header className="w-full h-12 flex gap-2">
         <Link>
           <img
-            src={user.photoURL ?? Avatar}
+            src={image}
             alt="user_avatar"
             className="h-full aspect-square rounded-full"
           />
         </Link>
 
         <Link className="flex flex-col justify-center">
-          <p className="dark:text-lightWhite font-semibold">{user.displayName}</p>
-          <p className="dark:text-lightWhite text-xs">15h.</p>
+          <p className="dark:text-lightWhite font-semibold">{name}</p>
+          <p className="dark:text-lightWhite text-xs">{date}</p>
         </Link>
       </header>
 
       <main className="w-full h-fit flex flex-col gap-3">
         <Modal
-          text="Lorem ipsum dolor sit amet consectetur, adipisicing elit.Lorem ipsum dolor sit amet consectetur, adipisicing elit.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet consectetur, adipisicing elit.Lorem ipsum dolor sit amet consectetur, adipisicing elit.Lorem ipsum dolor sit amet consectetur, adipisicing elit."
+          text={description}
         />
 
         <img
-          src="https://cdn2.dineroenimagen.com/media/dinero/styles/original/public/images/2021/12/torre-eiffel.jpg" alt="postImg"
+          src={imagePost} alt="postImg"
           className="w-full aspect-square bg-cover bg-no-repeat rounded-xl"
         />
 
@@ -61,8 +56,8 @@ const PostCard = () => {
           </Link>
 
           <div className="w-fit flex items-center gap-4 dark:text-lightWhite text-sm">
-            <Link>3 comments</Link>
-            <Link>17 Share</Link>
+            <Link>{comments} comments</Link>
+            <Link>{shares} Share</Link>
           </div>
         </div>
 
@@ -91,7 +86,7 @@ const PostCard = () => {
       <footer className="w-full h-fit">
         <Link className="h-11 flex items-center gap-2">
           <img
-            src={user.photoURL ?? Avatar}
+            src={image}
             alt="img_user"
             className="h-full aspect-square rounded-full"
           />
@@ -110,6 +105,17 @@ const PostCard = () => {
       </footer>
     </article>
   )
+}
+
+PostCard.propTypes = {
+  image: PropTypes.any,
+  name: PropTypes.string,
+  date: PropTypes.string,
+  description: PropTypes.string,
+  imagePost: PropTypes.string,
+  comments: PropTypes.number,
+  shares: PropTypes.number,
+  users: PropTypes.array
 }
 
 export default PostCard;

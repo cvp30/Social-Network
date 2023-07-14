@@ -2,13 +2,12 @@ const sequelize = require("../database");
 const { post } = sequelize.models;
 
 const CreatePost = async (req, res) => {
-  const { image_url, description, likes, userId } = req.body;
+  const { image_url, description, userId } = req.body;
 
   try {
     const newPost = await post.create({
       image_url: image_url,
       description: description,
-      likes: likes,
       userId: userId,
     })
     console.log(newPost)
@@ -19,6 +18,11 @@ const CreatePost = async (req, res) => {
   }
 }
 
+const GetAllPost = async (req, res) => {
+  // const {  }
+}
+
 module.exports = {
   CreatePost,
+  GetAllPost
 }

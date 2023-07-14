@@ -3,15 +3,12 @@ import { Navigate } from "react-router-dom";
 import Logo from "../../components/Logo";
 import SocialButtons from "./components/SocialButtons";
 import { FormUser } from "../../contexts/FormContext";
-import Form from "./components/Form";
-
-// import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 export const Authentication = () => {
 
   const { user } = UserAuth()
   const { isSignIn, setIsSignIn } = FormUser()
-  if (user) return <Navigate to="/" replace={true} />
+  if (user.state) return <Navigate to="/" replace={true} />
 
   return (
     <>

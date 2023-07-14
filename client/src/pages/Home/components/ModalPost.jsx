@@ -22,13 +22,13 @@ const ModalPost = () => {
     <>
       <button onClick={OpenForm} className="bg-lightWhite dark:bg-principal w-full h-fit rounded-xl p-3 flex flex-col gap-4">
         <div className="w-full h-12 flex gap-2">
-          <img src={user.photoURL ?? Avatar} alt="user" className="h-full aspect-square rounded-full" />
+          <img src={user.state.photoURL ?? Avatar} alt="user" className="h-full aspect-square rounded-full" />
           <p className="grow text-start p-3 bg-white dark:bg-secondary rounded-xl">
             What&apos;s happening?
           </p>
         </div>
 
-        <div className="w-full text-sm dark:text-white flex items-center gap-6">
+        <div className="w-full text-sm dark:text-white font-bold flex items-center gap-6">
           <div className="flex gap-2">
             <Video />
             <p>Live Video</p>

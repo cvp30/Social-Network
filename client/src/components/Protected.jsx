@@ -5,12 +5,11 @@ import Loading from "./Loading"
 
 const Protected = ({ children }) => {
 
-  const { user, loading } = UserAuth();
+  const userAuth = UserAuth();
 
+  if (userAuth?.loading) return <Loading />
 
-  if (loading) return <Loading />
-
-  if (!user) return <Navigate to="/auth" replace={true} />
+  if (!userAuth?.user.state) return <Navigate to="/auth" replace={true} />
 
   return (
     <>

@@ -1,5 +1,5 @@
 import ModalPost from "./components/ModalPost";
-import PostCard from "./components/PostCard";
+import PostCards from "./components/PostCards";
 
 const Home = () => {
 
@@ -10,10 +10,7 @@ const Home = () => {
       <div className="w-[29rem] h-fit flex flex-col gap-5">
         <ModalPost />
 
-        <PostCard
-        />
-
-        <PostCard
+        <PostCards
         />
 
       </div>

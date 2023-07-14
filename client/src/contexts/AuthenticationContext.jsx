@@ -2,32 +2,33 @@ import PropTypes from 'prop-types';
 import { createContext, useContext, useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth"
 import { Auth } from '../services/firebase/config';
-// import defaultUser from "../assets/defaultUser.png"
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
 
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState({ state: null })
+
   const [loading, setLoading] = useState(true)
 
-
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(Auth, currUser => {
+    const unsubscribe = onAuthStateChanged(Auth, async (currUser) => {
+
       if (currUser) {
-
-        // const UserObj = {
-        //   uid: currUser.uid,
-        //   displayName: currUser.displayName ?? defaultUser,
-        //   email: currUser.email,
-        //   photoURL: currUser.photoURL,
-        //   lastLogin: currUser.reloadUserInfo.lastLoginAt,
-        // }
-
-        setUser(currUser);
+        try {
+          setUser({
+            state: {
+              email: currUser.email,
+              displayName: currUser.displayName,
+              photoURL: currUser.photoURL,
+            }
+          })
+        } catch (error) {
+          console.log(error)
+        }
       }
       else {
-        setUser(null)
+        setUser({ state: null })
       }
 
       setLoading(false)

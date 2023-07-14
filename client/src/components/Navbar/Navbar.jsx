@@ -1,11 +1,7 @@
 import { NavLink } from "react-router-dom";
-import { Community, Home, Messages, Notification, Profile, Settings } from "../../icons";
+import { NavOptions, IconOptions } from "../../constants";
 
 const Navbar = () => {
-
-  const NavOptions = ["home", "community", "messages", "notification", "profile", "settings"]
-
-  const IconOptions = [<Home key={0} />, <Community key={1} />, <Messages key={2} />, <Notification key={3} />, <Profile key={4} />, <Settings key={5} />]
 
   return (
     <div className="w-full h-fit flex flex-col gap-2">
@@ -13,9 +9,20 @@ const Navbar = () => {
         NavOptions.map((option, key) => {
           return (
             <NavLink
-              to={`/${option}`}
+              to={`/${option === 'home' ? '' : option}`}
+
               key={key}
-              className="p-3 flex items-center gap-2 capitalize rounded-lg hover:bg-darkButton hover:text-white dark:text-white font-bold"
+              className={
+                ({ isActive }) => {
+
+                  const baseClassName = 'p-3 flex items-center gap-2 capitalize rounded-lg dark:text-white font-bold'
+
+                  return isActive ?
+                    `bg-darkButton text-white ${baseClassName}`
+                    :
+                    `hover:bg-darkButton hover:text-white ${baseClassName}`
+                }
+              }
             >
               {IconOptions[key]}
               <p>{option}</p>

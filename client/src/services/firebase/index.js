@@ -1,14 +1,22 @@
-import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth"
 import { Auth } from "./config";
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
+  // signInWithRedirect,
+  signOut
+} from "firebase/auth"
 
 export const GoogleSignIn = async () => {
   const googleProvider = new GoogleAuthProvider();
-  await signInWithPopup(Auth, googleProvider)
+  // await signInWithRedirect(Auth, googleProvider)
+  return await signInWithPopup(Auth, googleProvider).then(response => response)
 }
 
 export const githubSignIn = async () => {
   const githubProvider = new GithubAuthProvider();
-  await signInWithPopup(Auth, githubProvider)
+  // await signInWithRedirect(Auth, githubProvider)
+  return await signInWithPopup(Auth, githubProvider).then(response => response)
 }
 
 export const SignOut = async () => {

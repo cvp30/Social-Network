@@ -7,7 +7,7 @@ import ContactsMobile from "../Contacts/ContactsMobile";
 import NavbarMobile from "../Navbar/NavbarMobile";
 
 const Header = () => {
-  const { user } = UserAuth();
+  const currUser = UserAuth();
 
   return (
     <header className="bg-lightWhite z-10 dark:bg-principal sticky top-0 px-4 flex justify-between items-center  w-full h-20 mx-auto max-w-screen-2xl">
@@ -32,8 +32,8 @@ const Header = () => {
           </div>
 
           <User
-            username={user?.displayName}
-            img={user?.photoURL}
+            username={currUser?.user.state.displayName}
+            img={currUser?.user.state.photoURL}
           />
         </div>
 
