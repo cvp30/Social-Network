@@ -4,7 +4,7 @@ import { NavOptions, IconOptions } from "../../constants";
 const Navbar = () => {
 
   return (
-    <div className="w-full h-fit flex flex-col gap-2">
+    <div className="w-full h-fit flex flex-col gap-2 pr-4">
       {
         NavOptions.map((option, key) => {
           return (

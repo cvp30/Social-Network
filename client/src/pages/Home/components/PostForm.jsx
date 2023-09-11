@@ -1,10 +1,9 @@
 import { Close, Feeling, Photo, Video } from "../../../icons";
 import PropTypes from 'prop-types';
-import { UserAuth } from "../../../contexts/AuthenticationContext";
-import Avatar from "../../../assets/defaultUser.png"
+import { useProfile } from "../../../hooks/useProfile";
 
 const PostForm = ({ CloseForm }) => {
-  const { user } = UserAuth();
+  const { profile } = useProfile();
 
   const option = "flex gap-1 items-center hover:bg-darkButton p-2 rounded-xl";
   return (
@@ -21,9 +20,9 @@ const PostForm = ({ CloseForm }) => {
 
       <main className="h-fit flex flex-col gap-2">
         <div className="flex items-center gap-3 h-14">
-          <img src={user.photoURL ?? Avatar} alt="user" className="h-full aspect-square rounded-full" />
+          <img src={profile.photoURL} alt="user" className="h-full aspect-square rounded-full" />
           <div>
-            <p>{user.displayName}</p>
+            <p>{profile.username}</p>
             <select
               name="visibility"
               id="visibility"

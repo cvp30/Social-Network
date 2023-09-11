@@ -9,7 +9,6 @@ import {
 
 export const GoogleSignIn = async () => {
   const googleProvider = new GoogleAuthProvider();
-  // await signInWithRedirect(Auth, googleProvider)
   return await signInWithPopup(Auth, googleProvider).then(response => response)
 }
 

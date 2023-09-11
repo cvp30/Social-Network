@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { UserAuth } from "../../../contexts/AuthenticationContext";
 import { Feeling, Photo, Video } from "../../../icons";
 import PostForm from "./PostForm";
-import Avatar from "../../../assets/defaultUser.png"
+import { useProfile } from "../../../hooks/useProfile";
 
 const ModalPost = () => {
-  const { user } = UserAuth();
+
+  const { profile } = useProfile()
   const [isOpen, setIsOpen] = useState(false);
 
   const OpenForm = () => {
@@ -22,7 +22,7 @@ const ModalPost = () => {
     <>
       <button onClick={OpenForm} className="bg-lightWhite dark:bg-principal w-full h-fit rounded-xl p-3 flex flex-col gap-4">
         <div className="w-full h-12 flex gap-2">
-          <img src={user.state.photoURL ?? Avatar} alt="user" className="h-full aspect-square rounded-full" />
+          <img src={profile.photoURL} alt="user" className="h-full aspect-square rounded-full" />
           <p className="grow text-start p-3 bg-white dark:bg-secondary rounded-xl">
             What&apos;s happening?
           </p>

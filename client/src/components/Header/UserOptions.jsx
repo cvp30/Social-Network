@@ -1,15 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { LogOut, Moon, Sun } from "../../icons";
 import OptionButton from "./OptionButton";
 import { useEffect, useState } from "react";
-// import { UserAuth } from "../../contexts/AuthenticationContext";
-import { SignOut } from "../../services/firebase";
+import { useProfile } from "../../hooks/useProfile";
 
 const UserOptions = ({ username, isOpen, setIsOpen }) => {
 
-  // const { SignOut } = UserAuth();
-
+  const navigate = useNavigate()
+  const { client } = useProfile()
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem('dark') === "true"
   );
@@ -29,11 +28,9 @@ const UserOptions = ({ username, isOpen, setIsOpen }) => {
   }
 
   const handleSignOut = async () => {
-    try {
-      await SignOut();
-    } catch (error) {
-      console.log(error)
-    }
+    localStorage.removeItem("Session")
+    client.resetStore()
+    navigate('/auth')
   }
 
   useEffect(() => {

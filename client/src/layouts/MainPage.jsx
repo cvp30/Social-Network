@@ -1,11 +1,13 @@
 import Header from "../components/Header/Header";
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
-import Contacts from "../components/Contacts/Contacts";
+// import Contacts from "../components/Contacts/Contacts";
 
 const MainPage = () => {
+
   return (
     <nav className=" flex flex-col gap-4 w-full h-full">
+
       <Header />
 
       <div className="w-full flex">
@@ -13,12 +15,8 @@ const MainPage = () => {
           <Navbar />
         </nav>
 
-        <main className="grow">
+        <div className="w-full h-fit">
           <Outlet />
-        </main>
-
-        <div className="w-80 hidden md:block">
-          <Contacts />
         </div>
       </div>
     </nav>

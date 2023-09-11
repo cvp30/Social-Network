@@ -1,16 +1,16 @@
 import SearchInput from "../SearchInput";
 import User from "./User";
 import SearchInputMobile from "./SearchInputMobile";
-import { UserAuth } from "../../contexts/AuthenticationContext";
 import Logo from "../Logo";
 import ContactsMobile from "../Contacts/ContactsMobile";
 import NavbarMobile from "../Navbar/NavbarMobile";
 
+
 const Header = () => {
-  const currUser = UserAuth();
 
   return (
     <header className="bg-lightWhite z-10 dark:bg-principal sticky top-0 px-4 flex justify-between items-center  w-full h-20 mx-auto max-w-screen-2xl">
+
       <Logo />
 
       <div className="h-full grow flex items-center lg:justify-between justify-end gap-1">
@@ -31,10 +31,7 @@ const Header = () => {
             <NavbarMobile />
           </div>
 
-          <User
-            username={currUser?.user.state.displayName}
-            img={currUser?.user.state.photoURL}
-          />
+          <User />
         </div>
 
       </div>

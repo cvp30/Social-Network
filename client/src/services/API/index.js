@@ -5,6 +5,8 @@ export const RegisterUser = async (data) => {
   return await postAxios('/user', data)
 }
 
-export const GetUser = async (email) => {
-  return await getAxios('/user', email)
+export const GetUser = async (url) => {
+  // return await getAxios(`/user?email=${email}`)
+  return await getAxios(url)
+
 }

@@ -1,13 +1,8 @@
 import PropTypes from 'prop-types';
 import { UsernameAvatar } from '../../../icons';
-import { FormUser } from '../../../contexts/FormContext';
 
-const InputText = () => {
+const InputUsername = ({ userFormik }) => {
 
-  const {
-    form,
-    handleChange
-  } = FormUser()
   return (
     <div className="flex h-12 border border-silver dark:border-darkBorder rounded-xl" >
       <div className="h-full w-[11%] flex justify-center items-center">
@@ -17,8 +12,9 @@ const InputText = () => {
       <input
         type="text"
         name="username"
-        value={form.username}
-        onChange={handleChange}
+        value={userFormik.values.username}
+        onChange={userFormik.handleChange}
+        onBlur={userFormik.handleBlur}
         placeholder="username"
         className="w-[89%] p-2 outline-none rounded-xl dark:bg-secondary"
         autoComplete='off'
@@ -27,8 +23,9 @@ const InputText = () => {
   )
 }
 
-InputText.propTypes = {
+InputUsername.propTypes = {
   children: PropTypes.any,
+  userFormik: PropTypes.any,
 }
 
-export default InputText;
+export default InputUsername;

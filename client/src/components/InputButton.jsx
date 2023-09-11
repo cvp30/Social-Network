@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 const InputButton = ({ children }) => {
   return (
     <button
+      type='submit'
       className="w-full bg-blue text-white py-3 font-bold rounded-lg"
       disabled={false}
     >
@@ -12,7 +13,7 @@ const InputButton = ({ children }) => {
 }
 
 InputButton.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.string,
 }
 
 export default InputButton;

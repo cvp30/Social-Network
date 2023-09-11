@@ -1,10 +1,9 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { LockPassword, Password, UnlockPassword } from '../../../icons'
-import { FormUser } from '../../../contexts/FormContext';
 
-const InputPassword = () => {
+const InputPassword = ({ userFormik }) => {
 
-  const { form, handleChange } = FormUser()
   const [view, setView] = useState(false);
 
   const handleView = (event) => {
@@ -23,11 +22,13 @@ const InputPassword = () => {
         name="password"
         placeholder="Password"
         className="w-[78%] p-2 outline-none rounded-xl dark:bg-secondary dark:text-white tracking-wider"
-        value={form.password}
-        onChange={handleChange}
+        value={userFormik.values.password}
+        onChange={userFormik.handleChange}
+        onBlur={userFormik.handleBlur}
       />
 
       <button
+        type='button'
         className="h-full w-[11%] flex justify-center items-center"
         onClick={handleView}
       >
@@ -42,6 +43,10 @@ const InputPassword = () => {
       </button>
     </div >
   )
+}
+
+InputPassword.propTypes = {
+  userFormik: PropTypes.any
 }
 
 export default InputPassword;

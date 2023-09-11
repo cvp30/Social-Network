@@ -1,12 +1,8 @@
-import { FormUser } from '../../../contexts/FormContext';
+import PropTypes from 'prop-types';
 import { EmailIcon } from '../../../icons';
 
-const InputEmail = () => {
+const InputEmail = ({ userFormik }) => {
 
-  const {
-    form,
-    handleChange,
-  } = FormUser()
   return (
     <div className="flex h-12 border border-silver dark:border-darkBorder rounded-xl" >
       <div className="h-full w-[11%] flex justify-center items-center">
@@ -19,8 +15,9 @@ const InputEmail = () => {
         name="email"
         pattern='^[^\s@]+@[^\s@]+\.[^\s@]+$'
         className="w-[89%] p-2 outline-none rounded-xl dark:bg-secondary dark:text-white tracking-wider"
-        value={form.email}
-        onChange={handleChange}
+        value={userFormik.values.email}
+        onChange={userFormik.handleChange}
+        onBlur={userFormik.handleBlur}
       />
     </div >
 
@@ -28,4 +25,8 @@ const InputEmail = () => {
   )
 }
 
-export default InputEmail;
+InputEmail.propTypes = {
+  userFormik: PropTypes.any
+}
+
+export default InputEmail

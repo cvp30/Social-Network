@@ -1,23 +1,38 @@
 import { createBrowserRouter } from "react-router-dom";
-import Authentication from "../pages/Authentication/Authentication";
-import { FormContextProvider } from "../contexts/FormContext";
-import Home from "../pages/Home/Home";
-import MainPage from "../layouts/MainPage";
 import Protected from "../components/Protected";
+import MainPage from "../layouts/MainPage";
+import FriendListSidebar from "../layouts/FriendListSidebar";
+import Authentication from "../pages/Authentication";
+import Home from "../pages/Home";
+import Profile from "../pages/Profile";
+import Messages from "../pages/Messages/Messages";
 
 export const router = createBrowserRouter([
   {
     path: '/auth',
-    element: <FormContextProvider> <Authentication /> </FormContextProvider>,
-    // element: <Authentication />,
+    element: <Authentication />,
   },
   {
     path: '/',
     element: <Protected> <MainPage /> </Protected>,
     children: [
       {
-        index: true,
-        element: <Home />,
+        path: '/',
+        element: <FriendListSidebar />,
+        children: [
+          {
+            index: true,
+            element: <Home />
+          }
+        ]
+      },
+      {
+        path: ':userSlug',
+        element: <Profile />,
+      },
+      {
+        path: 'messages',
+        element: <Messages />,
       }
     ]
   }

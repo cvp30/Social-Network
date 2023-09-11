@@ -2,11 +2,14 @@ import PropTypes from 'prop-types';
 import { ArrowDown } from '../../icons';
 import UserOptions from './UserOptions';
 import { useEffect, useRef, useState } from 'react';
+import { useProfile } from '../../hooks/useProfile';
 
-const User = ({ username, img }) => {
+const User = () => {
 
   const userOptions = useRef()
   const [isOpen, setIsOpen] = useState(false);
+
+  const { profile, loading } = useProfile()
 
   useEffect(() => {
     const clickOutside = (event) => {
@@ -19,18 +22,20 @@ const User = ({ username, img }) => {
     return () => {
       document.removeEventListener('mousedown', clickOutside);
     };
-  })
-
+  }, [])
 
   return (
     <div onClick={() => setIsOpen(!isOpen)} ref={userOptions} className="h-12 w-fit relative flex items-center justify-center gap-2">
       <button className='h-full flex justify-center items-center dark:text-white list-none'>
-        <img className='h-full aspect-square rounded-full object-cover' src={img} alt="user" />
+        {
+          !loading && <img className='h-full aspect-square rounded-full object-cover' src={profile.photoURL} alt="profile" />
+        }
+
         <div className='hidden sm:block'>
           <ArrowDown />
         </div>
       </button>
-      <UserOptions username={username} isOpen={isOpen} setIsOpen={setIsOpen} />
+      <UserOptions username={profile?.username} isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   )
 }

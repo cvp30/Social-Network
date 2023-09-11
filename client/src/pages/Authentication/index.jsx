@@ -1,18 +1,22 @@
-import { UserAuth } from "../../contexts/AuthenticationContext";
-import { Navigate } from "react-router-dom";
+import { useState } from "react";
 import Logo from "../../components/Logo";
-import SocialButtons from "./components/SocialButtons";
-import { FormUser } from "../../contexts/FormContext";
+import Form from "./components/Form"
+import { useProfile } from "../../hooks/useProfile";
+import { Navigate } from "react-router-dom";
 
 export const Authentication = () => {
 
-  const { user } = UserAuth()
-  const { isSignIn, setIsSignIn } = FormUser()
-  if (user.state) return <Navigate to="/" replace={true} />
+
+  const [isSignIn, setIsSignIn] = useState(true);
+
+  const { profile } = useProfile()
+  const sessionToken = localStorage.getItem('Session')
+
+
+  if (profile && sessionToken) return <Navigate to='/' replace />
 
   return (
     <>
-
       <header className="w-full h-12 flex items-center justify-start">
         <Logo />
       </header>
@@ -35,13 +39,13 @@ export const Authentication = () => {
 
         <div className="w-full h-fit flex flex-col gap-4 items-center py-5 px-0 md:p-5 shadow-[0px_0px_26px_-3px_silver] rounded-lg dark:bg-secondary dark:shadow-secondary">
 
-          <SocialButtons />
+          {/* <SocialButtons /> */}
 
-          <div className="flex gap-2 items-center w-full after:w-1/2 after:border dark:after:border-darkBorder after:border-silver before:w-1/2 before:border dark:before:border-darkBorder before:border-silver">
+          {/* <div className="flex gap-2 items-center w-full after:w-1/2 after:border dark:after:border-darkBorder after:border-silver before:w-1/2 before:border dark:before:border-darkBorder before:border-silver">
             <p>OR</p>
-          </div>
+          </div> */}
 
-          {/* <Form /> */}
+          <Form isSignIn={isSignIn} />
 
           <div className="flex gap-2 my-4 h-fit">
             <p>
