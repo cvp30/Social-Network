@@ -434,3 +434,18 @@ export const Upload = () => {
   )
 }
 
+export const LinkUrl = () => {
+  return (
+    <svg width={20} height={20} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path fillRule="evenodd" d="M15.103 5.503a2.4 2.4 0 1 1 3.394 3.394l-3.6 3.6a2.4 2.4 0 0 1-3.394 0 1.2 1.2 0 0 0-1.697 1.697 4.8 4.8 0 0 0 6.788 0l3.6-3.6a4.8 4.8 0 0 0-6.788-6.788l-1.8 1.8a1.2 1.2 0 1 0 1.697 1.697l1.8-1.8Zm-6 6a2.4 2.4 0 0 1 3.394 0 1.2 1.2 0 1 0 1.697-1.697 4.8 4.8 0 0 0-6.788 0l-3.6 3.6a4.8 4.8 0 1 0 6.788 6.788l1.8-1.8a1.2 1.2 0 1 0-1.697-1.697l-1.8 1.8a2.399 2.399 0 1 1-3.394-3.394l3.6-3.6Z" clipRule="evenodd" />
+    </svg>
+  )
+}
+
+export const Location = () => {
+  return (
+    <svg width={20} height={20} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path fillRule="evenodd" d="M6.06 4.86a8.4 8.4 0 0 1 11.88 11.88L12 22.68l-5.94-5.94a8.4 8.4 0 0 1 0-11.88ZM12 13.2a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8Z" clipRule="evenodd" />
+    </svg>
+  )
+}

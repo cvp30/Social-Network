@@ -8,10 +8,23 @@ export const typeDefs = gql`
   type User {
     id: ID!
     email: String!
+    password: String
     username: String!
     slug: String!
     photoURL: String
+    website: String
+    bio: String
+    location: String
     state: Boolean
+  }
+
+  input ProfileUpdate {
+    password: String
+    username: String
+    photoURL: String
+    website: String
+    bio: String
+    location: String
   }
 
   type UserOutput {
@@ -22,7 +35,7 @@ export const typeDefs = gql`
   extend type Query {
     GetProfile: User!
     GetUser(
-      email: String!
+      slug: String!
     ): User!
     GetAllUsers: [User]
   }
@@ -38,6 +51,10 @@ export const typeDefs = gql`
       email: String!
       password: String!
     ): UserOutput!
+    
+    UpdateProfile(
+      input: ProfileUpdate
+    ): User
   }
 `
 
@@ -55,23 +72,16 @@ export const resolvers = {
       }
     },
     GetUser: async (_, args, context) => {
-      if (!context.currentUser) throw new AuthenticationError('Not Authenticated')
+      // if (!context.currentUser) throw new AuthenticationError('Not Authenticated')
 
       try {
-        const { email } = args
+        const { slug } = args
 
-        const user = await User.findOne({ email })
+        const user = await User.findOne({ slug }).lean()
 
         if (!user) throw new UserInputError("Account doesn't exist!")
 
-        return {
-          id: user._id,
-          email: user.email,
-          username: user.username,
-          slug: user.slug,
-          photoURL: user.photoURL,
-          state: user.state,
-        }
+        return user
 
       } catch (error) {
         throw new Error(error.message)
@@ -81,7 +91,7 @@ export const resolvers = {
     GetAllUsers: async (_, args, context) => {
       if (!context.currentUser) throw new AuthenticationError('Not Authenticated')
       try {
-        return await User.find()
+        return await User.find().lean()
       } catch (error) {
         throw new Error(error.message)
       }
@@ -156,6 +166,27 @@ export const resolvers = {
         throw new Error(error.message)
       }
 
+    },
+    UpdateProfile: async (_, { input }, context) => {
+      if (!context.currentUser) throw new AuthenticationError('Not Authenticated')
+
+      try {
+        const userId = context.currentUser.id
+
+        return await User.findOneAndUpdate(
+          {
+            _id: userId
+          },
+          {
+            $set: input
+          },
+          {
+            new: true
+          }
+        )
+      } catch (error) {
+        throw new Error(error.message)
+      }
     }
   }
 }

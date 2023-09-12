@@ -15,7 +15,7 @@ const Navbar = () => {
               className={
                 ({ isActive }) => {
 
-                  const baseClassName = 'p-3 flex items-center gap-2 capitalize rounded-lg dark:text-white font-bold'
+                  const baseClassName = 'p-3 flex items-center gap-2 capitalize rounded-lg dark:text-white font-bold transition-all duration-150 ease-in-out'
 
                   return isActive ?
                     `bg-darkButton text-white ${baseClassName}`

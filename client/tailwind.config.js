@@ -19,6 +19,7 @@ export default {
       'principal': '#191e27',
       'darkButton': '#4e5d78',
       'silver': '#dcdfe4',
+      'darkSilver': '#9d9d9d',
       'secondary': '#212833',
       'darkBorder': '#4b5771',
       'transparent': '#00000000',

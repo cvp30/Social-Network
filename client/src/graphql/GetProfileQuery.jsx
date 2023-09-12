@@ -8,6 +8,9 @@ export const GET_PROFILE = gql`
       slug
       username
       photoURL
+      website
+      bio
+      location
       state
     }
   }

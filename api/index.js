@@ -44,6 +44,9 @@ const { url } = await startStandaloneServer(server, {
           username: user.username,
           slug: user.slug,
           photoURL: user.photoURL,
+          website: user.website,
+          bio: user.bio,
+          location: user.location,
           state: user.state,
         }
         return { currentUser }

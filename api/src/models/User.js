@@ -6,14 +6,14 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  username: {
-    type: String,
-    required: true,
-  },
   password: {
     type: String,
     required: true,
     minlength: 6
+  },
+  username: {
+    type: String,
+    required: true,
   },
   slug: {
     type: String,
@@ -21,6 +21,15 @@ const userSchema = new mongoose.Schema({
     unique: true,
   },
   photoURL: {
+    type: String
+  },
+  website: {
+    type: String
+  },
+  bio: {
+    type: String
+  },
+  location: {
     type: String
   },
   state: {

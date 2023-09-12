@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import 'dotenv/config'
 
-const MONGODB_URL = "mongodb+srv://valercarlos30:soulstrong_@cluster0.gy093a4.mongodb.net/social-media?retryWrites=true&w=majority"
+const { MONGODB_URL } = process.env
 
 mongoose.connect(MONGODB_URL, {
   useUnifiedTopology: true,
