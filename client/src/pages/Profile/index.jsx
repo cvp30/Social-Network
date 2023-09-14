@@ -2,17 +2,32 @@ import { Link, useParams } from "react-router-dom";
 import { useProfile } from "../../hooks/useProfile";
 import { LinkUrl, Location, Upload } from "../../icons";
 import Button from "../../components/Button";
+import Modal from "../../components/Modal";
+import { useState } from "react";
+import PostCards from "../Home/components/PostCards";
+import PostForm from "../../components/PostForm";
+import ProfileForm from "./components/ProfileForm";
 
 
 const Profile = () => {
 
   const { userSlug } = useParams();
-
   const { profile } = useProfile()
+  const [isOpen, setIsOpen] = useState(false)
 
   const isOwn = profile.slug === userSlug
   const isOwnProfile = true
-  console.log(profile)
+
+  const OpenModal = () => {
+    setIsOpen(true)
+    document.body.style.overflow = 'hidden'
+  }
+
+  const CloseModal = () => {
+    setIsOpen(false)
+    document.body.style.overflow = 'auto'
+  }
+
   return (
     <section className="w-full h-full flex flex-col gap-6">
       <header
@@ -35,7 +50,7 @@ const Profile = () => {
             )
           }
 
-          <div className="absolute w-40 h-40 rounded-full p-2  left-8 -bottom-10 border-2 border-white dark:border-darkButton">
+          <div className="absolute w-40 h-40 rounded-full left-8 -bottom-10 border-2 border-white dark:border-darkButton">
             <img
               className="w-full h-full rounded-full"
               src={profile.photoURL}
@@ -93,13 +108,22 @@ const Profile = () => {
             <li>
               203 Following
             </li>
-
-
-
           </ul>
 
+          <button
+            onClick={OpenModal}
+            className="w-full rounded-lg px-3 py-2 bg-white hover:bg-silver dark:bg-secondary dark:hover:bg-darkButton animation">
+            Edit Details
+          </button>
+          {
+            isOpen && <ProfileForm CloseModal={CloseModal} />
+          }
+
         </div>
-        <div className="rounded-xl bg-lightWhite dark:bg-principal dark:text-white">b</div>
+        <div className="rounded-xl flex flex-col gap-5">
+          <PostForm />
+          <PostCards />
+        </div>
         <div className="rounded-xl bg-lightWhite dark:bg-principal dark:text-white">c</div>
       </main>
 

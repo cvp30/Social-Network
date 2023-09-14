@@ -60,7 +60,7 @@ const SearchInputMobile = () => {
             onClick={() => setActive(false)}
             className="h-full aspect-square flex items-center justify-center"
           >
-            <Close className="h-6 aspect-square" />
+            <Close />
           </button>
 
           <div className="w-full h-full px-2 flex items-center">

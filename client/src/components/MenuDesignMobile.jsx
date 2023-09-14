@@ -59,7 +59,7 @@ const MenuDesignMobile = ({ icon, title, children }) => {
             onClick={() => setActive(false)}
             className="h-full aspect-square flex items-center justify-center"
           >
-            <Close className="h-6 aspect-square" />
+            <Close />
           </button>
 
           <p className="grow h-full px-2 flex justify-center items-center">
