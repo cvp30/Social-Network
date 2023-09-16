@@ -7,31 +7,26 @@ import { useState } from "react";
 import PostCards from "../Home/components/PostCards";
 import PostForm from "../../components/PostForm";
 import ProfileForm from "./components/ProfileForm";
-
+// import ProfileHeader from "./components/ProfileHeader";
+import ProfileHeader from "./components/ProfileHeader";
 
 const Profile = () => {
 
   const { userSlug } = useParams();
   const { profile } = useProfile()
-  const [isOpen, setIsOpen] = useState(false)
 
-  const isOwn = profile.slug === userSlug
-  const isOwnProfile = true
-
-  const OpenModal = () => {
-    setIsOpen(true)
-    document.body.style.overflow = 'hidden'
-  }
-
-  const CloseModal = () => {
-    setIsOpen(false)
-    document.body.style.overflow = 'auto'
-  }
 
   return (
     <section className="w-full h-full flex flex-col gap-6">
-      <header
-        className="w-full h-[28rem] flex flex-col justify-between gap-8 shadow-md rounded-xl"
+      <ProfileHeader
+        photoURL={profile.photoURL}
+        username={profile.username}
+        bio={profile.bio}
+        slug={profile.slug}
+        userSlug={userSlug}
+      />
+      {/* <header
+        className="w-full h-[28rem] flex flex-col justify-between border gap-8 shadow-md rounded-xl"
       >
         <div className="w-full h-2/3 relative">
           <img
@@ -77,12 +72,20 @@ const Profile = () => {
 
           {
             isOwnProfile ?
-              <Button value="Edit basic info" />
+              <Button
+                onClick={OpenModal}
+                value="Edit basic info"
+              />
               :
-              <Button value="Follow" />
+              <Button
+                value="Follow"
+              />
+          }
+          {
+            isOpen && <ProfileForm CloseModal={CloseModal} />
           }
         </div>
-      </header>
+      </header> */}
 
       <main className="w-full grid grid-cols-[1fr_2fr_1fr] grid-rows-[1fr] gap-x-4 rounded-xl bg-white dark:bg-secondary p-5 h-fit">
 
@@ -109,15 +112,6 @@ const Profile = () => {
               203 Following
             </li>
           </ul>
-
-          <button
-            onClick={OpenModal}
-            className="w-full rounded-lg px-3 py-2 bg-white hover:bg-silver dark:bg-secondary dark:hover:bg-darkButton animation">
-            Edit Details
-          </button>
-          {
-            isOpen && <ProfileForm CloseModal={CloseModal} />
-          }
 
         </div>
         <div className="rounded-xl flex flex-col gap-5">
