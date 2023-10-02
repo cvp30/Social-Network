@@ -1,5 +1,5 @@
 import { useState } from "react"
-import ProfileForm from "./ProfileForm"
+import UpdateDataForm from "./UpdateDataForm"
 import { Upload } from "../../../icons"
 import Button from "../../../components/Button";
 import PropTypes from 'prop-types';
@@ -79,7 +79,7 @@ const ProfileHeader = ({ photoURL, username, bio, slug, userSlug }) => {
             />
         }
         {
-          isOpen && <ProfileForm CloseModal={CloseModal} />
+          isOpen && <UpdateDataForm CloseModal={CloseModal} />
         }
       </div>
     </header>

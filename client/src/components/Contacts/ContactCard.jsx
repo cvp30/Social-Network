@@ -1,27 +1,28 @@
 import { Link } from "react-router-dom"
 import PropTypes from 'prop-types';
+import { Avatar, Badge } from "@nextui-org/react";
 
-
-const ContactCard = ({ route, image, name, state }) => {
+const ContactCard = ({ route, image, name, description, state }) => {
 
   return (
-    <Link
-      to={route}
-      className="w-full h-12 flex items-center justify-between hover:bg-darkButton hover:text-white rounded-lg py-2 px-4"
-    >
-      <div className="h-full w-[75%] flex items-center gap-2">
-        <img src={image} className="h-full aspect-square rounded-full" />
-
-        <p
-          className="dark:text-lightWhite overflow-hidden truncate text-ellipsis"
-        >
-          {name}
-        </p>
-
+    <Link to={route} className="w-full box-border px-1 py-2 flex gap-2 rounded-lg hover:bg-darkButton hover:text-white">
+      <Badge
+        content=""
+        color={state ? 'success' : 'danger'}
+        shape="circle"
+        placement="bottom-right"
+      >
+        <Avatar
+          isBordered
+          color={state ? 'success' : 'danger'}
+          radius="full"
+          src={image}
+        />
+      </Badge>
+      <div className="grow">
+        <p className="text-base overflow-hidden truncate text-ellipsis">{name}</p>
+        <p className="text-sm text-darkSilver">{description}</p>
       </div>
-
-      <span className={`${state ? 'bg-[#16FF00]' : 'bg-[red]'} h-2 aspect-square rounded-full`}></span>
-
     </Link>
   )
 }
@@ -30,6 +31,7 @@ ContactCard.propTypes = {
   route: PropTypes.string,
   image: PropTypes.string,
   name: PropTypes.string,
+  description: PropTypes.string,
   state: PropTypes.bool,
 }
 

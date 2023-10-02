@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Protected from "../components/Protected";
 import MainPage from "../layouts/MainPage";
-import FriendListSidebar from "../layouts/FriendListSidebar";
+import ContactsSidebar from "../layouts/ContactsSidebar"
 import Authentication from "../pages/Authentication";
 import Home from "../pages/Home";
 import Profile from "../pages/Profile";
@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <FriendListSidebar />,
+        element: <ContactsSidebar />,
         children: [
           {
             index: true,

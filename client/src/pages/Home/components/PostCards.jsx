@@ -1,35 +1,38 @@
-import { useProfile } from "../../../hooks/useProfile";
-import PostCard from "./PostCard";
+import { useQuery } from "@apollo/client";
+import PostCard from "../../../components/PostCard";
+import PropTypes from 'prop-types';
+import { GET_ALL_POSTS } from "../../../graphql/GetAllPosts";
 
 const PostCards = () => {
-  // USUARIO TEMPORAL
-  const { profile } = useProfile()
-  const users = Array.from({ length: 5 }, () => ({ ...profile.state }));
 
-  const totalUsers = [1, 2, 3, 4, 5];
+  const { loading, data } = useQuery(GET_ALL_POSTS)
+
+  if (loading) return <h3>LOADING</h3>
+
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-3">
       {
-        totalUsers.map((value, key) => {
+        data.GetAllPosts.map(post => {
           return (
             <PostCard
-              key={key}
-              image={profile.photoURL}
-              name={profile.username}
-              date="15h."
-              description="Lorem ipsum dolor sit amet consectetur, adipisicing elit.Lorem ipsum dolor sit amet consectetur, adipisicing elit.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet consectetur, adipisicing elit.Lorem ipsum dolor sit amet consectetur, adipisicing elit.Lorem ipsum dolor sit amet consectetur, adipisicing elit."
-              imagePost="https://cdn2.dineroenimagen.com/media/dinero/styles/original/public/images/2021/12/torre-eiffel.jpg"
-              users={users}
-              comments={3}
-              shares={10}
+              key={post.id}
+              photoURL={post.userId.photoURL}
+              username={post.userId.username}
+              slug={post.userId.slug}
+              date={post.createdAt}
+              isFollower={true}
+              description={post.content}
+              photoPost={post.image}
             />
           )
         })
       }
-
-
     </div>
   )
+}
+
+PostCards.propTypes = {
+  posts: PropTypes.object,
 }
 
 export default PostCards;

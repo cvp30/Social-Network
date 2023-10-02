@@ -9,7 +9,6 @@ export const REGISTER_USER = gql`
         email
         photoURL
         slug
-        state
         username
       }
     }

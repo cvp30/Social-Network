@@ -1,4 +1,5 @@
-import SearchInput from "../SearchInput";
+import { Input } from "@nextui-org/react";
+import { Search } from "../../icons";
 import ContactCard from "./ContactCard";
 
 const Contacts = () => {
@@ -6,73 +7,90 @@ const Contacts = () => {
   const friends = [
     {
       name: "carlos david valer pacompia",
+      description: "frontend developer",
       image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
       state: true,
     },
     {
       name: "carlos",
+      description: "frontend developer",
+      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
+      state: false,
+    },
+    {
+      name: "carlos",
+      description: "frontend developer",
+      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
+      state: false,
+    },
+    {
+      name: "carlos david valer pacompia",
+      description: "frontend developer",
       image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
       state: true,
     },
     {
       name: "carlos",
+      description: "frontend developer",
       image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
       state: true,
     },
     {
       name: "carlos",
+      description: "frontend developer",
+      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
+      state: true,
+    },
+    {
+      name: "carlos david valer pacompia",
+      description: "frontend developer",
       image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
       state: true,
     },
     {
       name: "carlos",
+      description: "frontend developer",
       image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
       state: true,
     },
     {
       name: "carlos",
+      description: "frontend developer",
+      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
+      state: true,
+    },
+    {
+      name: "carlos david valer pacompia",
+      description: "frontend developer",
       image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
       state: true,
     },
     {
       name: "carlos",
+      description: "frontend developer",
       image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
       state: true,
     },
     {
       name: "carlos",
-      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-      state: true,
-    },
-    {
-      name: "carlos",
-      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-      state: true,
-    },
-    {
-      name: "carlos",
-      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-      state: true,
-    },
-    {
-      name: "carlos",
-      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-      state: true,
-    },
-    {
-      name: "carlos",
+      description: "frontend developer",
       image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
       state: true,
     },
   ]
 
   return (
-    <div className="w-full contacts flex flex-col gap-3 sticky top-24 overflow-y-auto overscroll-contain">
-      <div className="px-4">
-        <SearchInput placeholder="Search friends..." />
-      </div>
+    <div className="w-full contacts flex flex-col gap-3 sticky top-24 overflow-y-auto overscroll-contain px-4">
+      <Input
+        placeholder="Search friends..."
+        size="lg"
+        variant="bordered"
+        startContent={<Search />}
+        type="search"
+        radius="md"
+      />
 
-      <p className="dark:text-lightWhite px-4">Friends</p>
+      <p className="font-semibold">Friends</p>
 
       <div className="flex flex-col gap-1">
         {
@@ -81,8 +99,9 @@ const Contacts = () => {
               <ContactCard
                 key={key}
                 route=""
-                image={user.image}
                 name={user.name}
+                description={user.description}
+                image={user.image}
                 state={user.state}
               />
             )

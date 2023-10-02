@@ -1,42 +1,77 @@
+import { Community, Home, Messages, Notification, Profile, Settings } from "../icons"
 
+export const items = [
+  {
+    title: 'home',
+    icon: Home,
+  },
+  {
+    title: 'community',
+    icon: Community,
+  },
+  {
+    title: 'messages',
+    icon: Messages,
+  },
+  {
+    title: 'notification',
+    icon: Notification,
+  },
+  {
+    title: 'profile',
+    icon: Profile,
+  },
+  {
+    title: 'settings',
+    icon: Settings,
+  },
+]
 
-export const validateSignIn = ({ email, password }) => {
-  const errors = [];
+export const CurrentDate = (date) => {
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const passwordRegex = /^(?=.*\w).{8,}$/;
+  const inputDate = new Date(date);
+  const currentDate = new Date();
 
-  if (!emailRegex.test(email)) errors.push("email must have the proper format.");
+  // YEARS
+  const years = currentDate.getFullYear() - inputDate.getFullYear();
 
-  if (!passwordRegex.test(password)) {
-    errors.push('password must contain at least one alphanumeric character.');
-  }
-  if ((password.length < 8 || password.length > 100)) {
-    errors.push("must be at least 8 characters.")
-  }
+  if (years) return `${years} years`
 
-  return errors;
-}
+  //MONTHS
+  const months = currentDate.getMonth() - inputDate.getMonth();
+  if (months) return `${months} months`
 
-export const validateSignUp = ({ email, username, password }) => {
-  const errors = [];
+  // --------------------------------------
+  const difference = currentDate - inputDate
+  // --------------------------------------
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const usernameRegex = /^[a-zA-Z0-9_]{3,15}$/;
-  const passwordRegex = /^(?=.*\w).{8,}$/;
+  //WEEKS
+  const millisecondsPerWeek = 604800000;
+  const weeks = Math.floor(difference / millisecondsPerWeek)
 
-  if (!emailRegex.test(email)) errors.push("email must have the proper format.");
+  if (weeks) return `${weeks} weeks`
 
-  if (!usernameRegex.test(username)) errors.push("username only letters, numbers and underscores with a minimum length of 3 characters and a maximum of 15 characters.")
+  //DAYS
+  const millisecondsPerDay = 86400000;
+  const days = Math.floor(difference / millisecondsPerDay);
 
-  if (!passwordRegex.test(password)) {
-    errors.push('password must contain at least one alphanumeric character.');
-  }
-  if ((password.length < 8 || password.length > 100)) {
-    errors.push("password must be at least 8 characters.")
-  }
+  if (days) return `${days} days`
 
+  //HOURS
+  const millisecondsPerHour = 3600000;
+  const hours = Math.floor(difference / millisecondsPerHour);
 
+  if (hours) return `${hours} hours`
 
-  return errors;
+  //MINUTES
+  const millisecondsPerMinute = 60000;
+  const minutes = Math.floor(difference / millisecondsPerMinute)
+
+  if (minutes) return `${minutes} minutes`
+
+  //SECONDS
+  const millisecondsPerSecond = 1000;
+  const seconds = Math.floor(difference / millisecondsPerSecond)
+
+  return `${seconds} seconds`
 }

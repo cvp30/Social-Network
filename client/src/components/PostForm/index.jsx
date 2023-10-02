@@ -1,95 +1,123 @@
-import { useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { useProfile } from "../../hooks/useProfile"
-import { Feeling, Video } from "../../icons"
+import { Textarea, Avatar, SelectItem, Select, Button } from "@nextui-org/react"
+import ButtonsGroup from "./ButtonsGroup"
+import { PostContext } from "../../contexts/PostFormContext"
+import PreviewImage from "../PreviewImage"
+import { Close } from "../../icons"
 
 const PostForm = () => {
 
   const [isActive, setIsActive] = useState(false)
-  // const [text, setText] = useState('')
-  // const textareaRef = useRef();
   const { profile } = useProfile()
 
-  // const adjustTextareaHeight = () => {
-  //   const textarea = textareaRef.current;
-  //   textarea.style.height = ''; // Restablece la altura a automático
-  //   textarea.style.height = textarea.scrollHeight + 'px';
-  // }
-  // const handleTextChange = (event) => {
-  //   setText(event.target.value);
-  //   adjustTextareaHeight();
-  // };
+  const { postFormik } = PostContext()
 
+  const handleRemoveImage = () => {
+    postFormik?.setFieldValue('image', '')
+  }
 
-  const buttonCSS = "rounded-md flex justify-center items-center gap-2 box-border p-3 font-semibold hover:bg-white dark:hover:bg-darkButton dark:text-white w-36"
+  useEffect(() => {
+    const handleEscKeyPress = (e) => {
+      if (e.key === 'Escape') {
+        setIsActive(false)
+        postFormik?.setFieldValue('content', '')
+        postFormik?.setFieldValue('image', '')
+      }
+    }
+
+    document.addEventListener('keydown', handleEscKeyPress);
+
+    return () => {
+      document.removeEventListener('keydown', handleEscKeyPress);
+    }
+  }, [])
 
   return (
-    <div className="bg-lightWhite flex flex-col gap-4 dark:bg-principal rounded-xl w-full h-fit p-4">
-      <div className={`h-fit flex gap-2 ${isActive ? 'flex-col' : 'flex-row'}`}>
-        <div className={`${isActive ? 'w-full' : 'w-12'} h-12 flex justify-between gap-2`}>
-          <img
-            className="h-full aspect-square rounded-full"
-            src={profile.photoURL}
-            alt="imgProfile"
-          />
-
+    <form
+      onSubmit={postFormik?.handleSubmit}
+      className="bg-default flex flex-col gap-4  rounded-xl w-full h-fit p-3"
+    >
+      <div className={`h-fit flex items-center gap-2 ${isActive ? 'flex-col' : 'flex-row'}`}>
+        <div className={`${isActive ? 'w-full' : 'w-14'} h-16 flex justify-between items-center gap-2`}>
+          <Avatar src={profile.photoURL} />
           {
             isActive && (
-              <div className="flex items-center gap-2 font-semibold">
-                <p>Visible for:</p>
-                <select
-                  className="outline-none bg-transparent cursor-pointer text-blue"
-                  name="visibility"
-                  id="visibility"
-                >
-                  <option value="friends">friends</option>
-                  <option value="public">Public</option>
-                  <option value="me">Only me</option>
-                </select>
-              </div>
+              <Select
+                name="privacy"
+                variant="underlined"
+                label="Visible for"
+                defaultSelectedKeys={[postFormik?.values.privacy]}
+                className="w-40 h-fit"
+                color="primary"
+                size="lg"
+                value={postFormik?.values.privacy}
+                onChange={postFormik?.handleChange}
+                onBlur={postFormik?.handleBlur}
+                isInvalid={postFormik?.touched.privacy && Boolean(postFormik?.errors.privacy)}
+                errorMessage={postFormik?.touched.privacy && postFormik?.errors.privacy}
+              >
+                <SelectItem key="PUBLIC" value="PUBLIC">
+                  All Public
+                </SelectItem>
+                <SelectItem key="FOLLOWERS" value="FOLLOWERS">
+                  Only Followers
+                </SelectItem>
+              </Select>
             )
           }
         </div>
-
-        <div className="grow h-12">
-          <textarea
-            onClick={() => setIsActive(!isActive)}
-            className="h-full w-full p-2 bg-white dark:bg-secondary rounded-xl outline-none  resize-none"
+        <div className="w-full grow h-fit flex flex-col gap-2">
+          <Textarea
+            size="lg"
+            name="content"
+            onClick={() => setIsActive(true)}
+            minRows={1}
+            maxRows={5}
             placeholder="Whats happening?"
-            name="description"
-          // ref={textareaRef}
-          // value={text}
-          // onChange={handleTextChange}
+            radius="lg"
+            value={postFormik?.values.content}
+            onChange={postFormik?.handleChange}
           />
+
+          <div className="relative w-full h-fit flex gap-2 flex-wrap justify-center">
+
+            {
+              postFormik?.values.image && (
+                <>
+                  <PreviewImage file={postFormik?.values.image} />
+                  <Button
+                    isIconOnly
+                    size="sm"
+                    radius="full"
+                    className="absolute top-0 right-0"
+                    onClick={handleRemoveImage}
+                  >
+                    <Close />
+                  </Button>
+                </>
+              )
+            }
+          </div>
+
         </div>
       </div>
 
-      <div className="w-full flex justify-between">
-        {/* <div className="grow flex justify-center gap-2"> */}
-        <button className={buttonCSS}>
-          <Video />
-          <p>Photo/Video</p>
-        </button>
+      <div onClick={() => setIsActive(true)} className="w-full flex justify-between items-center">
+        <ButtonsGroup />
 
-        {/* <button className={buttonCSS}>
-            <Photo />
-            <p>Live Video</p>
-          </button> */}
-
-        <button className={buttonCSS}>
-          <Feeling />
-          <p>Feeling</p>
-        </button>
-        {/* </div> */}
-
-        <button
-          className="bg-blue w-28 rounded-lg text-white font-semibold"
+        <Button
           type="submit"
+          size="md"
+          radius="sm"
+          color="primary"
+          className="text-base"
         >
           Post
-        </button>
+        </Button>
       </div>
 
-    </div>
+    </form>
   )
 }
 

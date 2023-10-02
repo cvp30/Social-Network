@@ -2,9 +2,9 @@ import ReactDOM from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'
 import { router } from './router'
 import './index.css'
-import { AuthContextProvider } from './contexts/AuthenticationContext'
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { NextUIProvider } from '@nextui-org/react'
 
 
 const httpLink = createHttpLink({
@@ -29,12 +29,10 @@ const client = new ApolloClient({
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <SWRConfig value={{}}>
-  <ApolloProvider client={client}>
-    <AuthContextProvider>
+  <NextUIProvider>
+    <ApolloProvider client={client}>
       <RouterProvider router={router} />
-    </AuthContextProvider>
-  </ApolloProvider>
+    </ApolloProvider>
 
-  // </SWRConfig>
+  </NextUIProvider>
 )

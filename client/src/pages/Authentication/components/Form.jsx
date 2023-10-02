@@ -1,9 +1,5 @@
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
-import InputEmail from "./InputEmail";
-import InputUsername from "./InputUsername";
-import InputPassword from "./InputPassword";
-import InputButton from "../../../components/InputButton";
 import { Toaster } from "react-hot-toast";
 import { useFormik } from "formik";
 import { SignInUserSchema } from "../schemas/SignInUserSchema"
@@ -11,12 +7,17 @@ import { SignUpUserSchema } from "../schemas/SignUpUserSchema";
 import { REGISTER_USER } from "../graphql/RegisterUserMutation";
 import { LOGIN_USER } from "../graphql/LoginUserMutation"
 import { useMutation } from '@apollo/client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom"
+import { Button, Input } from '@nextui-org/react';
+import { Email, LockPassword, Password, UnlockPassword, Username } from '../../../icons';
 
 const Form = ({ isSignIn }) => {
 
   const navigate = useNavigate()
+  const [view, setView] = useState(false)
+
+  const toggleVisibility = () => setView(!view)
 
   const [AuthenticateUser] = useMutation(
     isSignIn ? LOGIN_USER : REGISTER_USER,
@@ -47,53 +48,117 @@ const Form = ({ isSignIn }) => {
       navigate('/')
     }
   })
+  console.log(userFormik.errors)
 
   useEffect(() => {
     userFormik.setValues(initialValues)
   }, [isSignIn])
 
-
   return (
     <form
       onSubmit={userFormik.handleSubmit}
-      className="w-full h-fit flex flex-col gap-2 font-normal"
+      className="w-full h-fit flex flex-col gap-4 font-normal"
     >
-      <Toaster />
+      <Input
+        size="lg"
+        type='email'
+        pattern='^[^\s@]+@[^\s@]+\.[^\s@]+$'
+        name='email'
+        variant='bordered'
+        placeholder='Email'
+        value={userFormik.values.email}
+        onChange={userFormik.handleChange}
+        onBlur={userFormik.handleBlur}
+        classNames={{
+          inputWrapper: "pr-0 border-ModuleItem",
+          input: "rounded-r-xl"
+        }}
+        startContent={
+          <span className={`${userFormik.touched.email && userFormik.errors.email ? 'text-danger' : ''}`}>
+            <Email />
+          </span>
+        }
+        isInvalid={userFormik.touched.email && Boolean(userFormik.errors.email)}
+        errorMessage={userFormik.touched.email && userFormik.errors.email}
+      />
 
-      <InputEmail userFormik={userFormik} />
-      {userFormik.touched.email && userFormik.errors.email && (
-        <p className="text-[red] text-xs">{userFormik.errors.email}</p>
-      )}
+      {
+        !isSignIn && (
+          <Input
+            size='lg'
+            name='username'
+            variant='bordered'
+            placeholder='Your username'
+            value={userFormik.values.username}
+            onChange={userFormik.handleChange}
+            onBlur={userFormik.handleBlur}
+            classNames={{
+              inputWrapper: "pr-0 border-secondary",
+              input: "rounded-r-xl"
+            }}
+            startContent={
+              <span className={`${userFormik.touched.username && userFormik.errors.username ? 'text-danger' : ''}`}>
+                <Username />
+              </span>
+            }
+            isInvalid={userFormik.touched.username && Boolean(userFormik.errors.username)}
+            errorMessage={userFormik.touched.username && userFormik.errors.username}
+          />
+        )
+      }
 
-      {!isSignIn && <InputUsername userFormik={userFormik} />}
-      {!isSignIn && userFormik.touched.username && userFormik.errors.username && (
-        <p className="text-[red] text-xs">{userFormik.errors.username}</p>
-      )}
-      <InputPassword userFormik={userFormik} />
-      {userFormik.touched.password && userFormik.errors.password && (
-        <p className="text-[red] text-xs">{userFormik.errors.password}</p>
-      )}
+      <Input
+        size='lg'
+        name='password'
+        type={`${view ? 'text' : 'password'}`}
+        variant='bordered'
+        placeholder='Password'
+        value={userFormik.values.password}
+        onChange={userFormik.handleChange}
+        onBlur={userFormik.handleBlur}
+        classNames={{
+          inputWrapper: "border-secondary",
+          input: "rounded-r-xl"
+        }}
+        startContent={
+          <span className={`${userFormik.touched.password && userFormik.errors.password ? 'text-danger' : ''}`}>
+            <Password />
+          </span>
+        }
+        endContent={
+          <div
+            onClick={toggleVisibility}
+            className={`${userFormik.touched.password && userFormik.errors.password ? 'text-danger' : ''} cursor-pointer`}
+          >
+            {
+              view ? <LockPassword /> : <UnlockPassword />
+            }
+          </div>
+        }
+        isInvalid={userFormik.touched.password && Boolean(userFormik.errors.password)}
+        errorMessage={userFormik.touched.password && userFormik.errors.password}
+      />
 
       {
         isSignIn &&
-        <div className="w-full h-fit flex flex-col sm:flex-row justify-between items-center">
-          <div className="flex gap-2 items-center">
-            <input type="checkbox" id="check" className="" />
-            <label htmlFor="check">Remember me</label>
-          </div>
-
-          <Link>Forgot Password?</Link>
-        </div>
+        <Link to='' className='text-primary w-fit'>Forgot Password?</Link>
       }
 
-      <InputButton>
+      <Button
+        type='submit'
+        fullWidth
+        color='primary'
+        radius='sm'
+        size='lg'
+        className='font-bold'
+      >
         {
           isSignIn ?
             'Sign In'
             :
             'Sign Up'
         }
-      </InputButton>
+      </Button>
     </form>
   )
 }

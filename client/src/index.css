@@ -5,36 +5,36 @@
 
 /* width */
 ::-webkit-scrollbar {
-    width: 7px;
+  width: 7px;
 }
-  
+
 /* Track */
 ::-webkit-scrollbar- {
-    border-radius: 5px;
+  border-radius: 5px;
 }
-  
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #4b5771;
-    border-radius: 5px;
+  background: #4b5771;
+  border-radius: 5px;
 }
-  
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #4b5771;
+  background: #4b5771;
 }
 
 @layer components {
   html {
     font-family: 'Roboto', sans-serif;
-    padding: 0rem .5rem;
+    /* padding: 0rem .5rem; */
     box-sizing: border-box;
-    color: #4b5771;
     font-size: .9375rem;
+    /* letter-spacing: 0.03rem; */
   }
 
   .dark {
-    background-color: #191e27;
+    background-color: #15202B;
     /* color: #eeeff2; */
     /* transition: all .3s ease-in-out; */
   }

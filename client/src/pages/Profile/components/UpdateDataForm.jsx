@@ -3,19 +3,34 @@ import { Close } from '../../../icons';
 import InputForm from './InputForm';
 import { useProfile } from '../../../hooks/useProfile';
 import { useFormik } from "formik"
+import { useMutation } from '@apollo/client';
+import { UPDATE_PROFILE_DATA } from '../graphql/UpdateBasicDataMutation';
+import { GET_PROFILE } from '../../../graphql/GetProfileQuery';
 
-const ProfileForm = ({ CloseModal }) => {
+const UpdateDataForm = ({ CloseModal }) => {
 
   const { profile } = useProfile()
 
+  const [updateProfileData] = useMutation(UPDATE_PROFILE_DATA, {
+    onCompleted: () => {
+      // alert("UPDATED")
+    },
+    refetchQueries: [
+      { query: GET_PROFILE },
+    ]
+  })
+
   const userFormik = useFormik({
     initialValues: {
+      username: profile.username,
       website: profile.website,
       location: profile.location ?? '',
       bio: profile.bio
     },
-    onSubmit: values => {
+    onSubmit: async values => {
       console.log(values)
+      await updateProfileData({ variables: { input: values } })
+      CloseModal()
     }
   })
 
@@ -41,6 +56,14 @@ const ProfileForm = ({ CloseModal }) => {
           className='w-full h-fit flex flex-col gap-4'
           onSubmit={userFormik.handleSubmit}
         >
+          <InputForm
+            label="username"
+            placeholder="Your username"
+            name="username"
+            value={userFormik.values.username}
+            onChange={userFormik.handleChange}
+          />
+
           <InputForm
             label="Website"
             placeholder="Your website"
@@ -90,8 +113,8 @@ const ProfileForm = ({ CloseModal }) => {
   )
 }
 
-ProfileForm.propTypes = {
+UpdateDataForm.propTypes = {
   CloseModal: PropTypes.any,
 }
 
-export default ProfileForm
+export default UpdateDataForm

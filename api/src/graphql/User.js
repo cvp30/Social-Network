@@ -8,21 +8,19 @@ export const typeDefs = gql`
   type User {
     id: ID!
     email: String!
-    password: String
     username: String!
     slug: String!
     photoURL: String
+    coverPhoto: String
     website: String
     bio: String
     location: String
-    state: Boolean
   }
-
-  input ProfileUpdate {
-    password: String
+  input ProfileData {
     username: String
-    photoURL: String
     website: String
+    photoURL: String
+    coverPhoto: String
     bio: String
     location: String
   }
@@ -37,7 +35,7 @@ export const typeDefs = gql`
     GetUser(
       slug: String!
     ): User!
-    GetAllUsers: [User]
+    GetAllUsers: [User!]!
   }
 
   extend type Mutation {
@@ -51,10 +49,14 @@ export const typeDefs = gql`
       email: String!
       password: String!
     ): UserOutput!
-    
+
     UpdateProfile(
-      input: ProfileUpdate
-    ): User
+      input: ProfileData
+    ): User!
+
+    UpdatePassword(
+      newPassword: String!
+    ): Boolean!
   }
 `
 
@@ -89,9 +91,9 @@ export const resolvers = {
 
     },
     GetAllUsers: async (_, args, context) => {
-      if (!context.currentUser) throw new AuthenticationError('Not Authenticated')
+      // if (!context.currentUser) throw new AuthenticationError('Not Authenticated')
       try {
-        return await User.find().lean()
+        return await User.find()
       } catch (error) {
         throw new Error(error.message)
       }
@@ -184,6 +186,29 @@ export const resolvers = {
             new: true
           }
         )
+      } catch (error) {
+        throw new Error(error.message)
+      }
+    },
+    UpdatePassword: async (_, { newPassword }, context) => {
+      if (!context.currentUser) throw new AuthenticationError('Not Authenticated')
+
+      try {
+        const userId = context.currentUser.id
+
+        const result = await User.findOneAndUpdate(
+          {
+            _id: userId
+          },
+          {
+            $set: { password: newPassword }
+          },
+          {
+            new: true
+          }
+        )
+
+        return result !== null
       } catch (error) {
         throw new Error(error.message)
       }

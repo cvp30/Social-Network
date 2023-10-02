@@ -21,20 +21,20 @@ const userSchema = new mongoose.Schema({
     unique: true,
   },
   photoURL: {
-    type: String
+    type: String,
+  },
+  coverPhoto: {
+    type: String,
   },
   website: {
-    type: String
+    type: String,
   },
   bio: {
-    type: String
+    type: String,
+    maxlength: 160,
   },
   location: {
-    type: String
-  },
-  state: {
-    type: Boolean,
-    default: true,
+    type: String,
   }
 })
 

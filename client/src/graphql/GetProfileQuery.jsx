@@ -8,10 +8,10 @@ export const GET_PROFILE = gql`
       slug
       username
       photoURL
+      coverPhoto
       website
       bio
       location
-      state
     }
   }
 `
