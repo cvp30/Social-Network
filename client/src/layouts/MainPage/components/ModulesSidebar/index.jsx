@@ -1,16 +1,20 @@
 import { NavLink } from "react-router-dom";
 import { items } from "../../../../utils";
+import { useUser } from "../../../../hooks/useUser";
 
 const ModulesSidebar = () => {
+  const { profile } = useUser()
 
   return (
-    <div className="w-full h-fit flex flex-col gap-2 pr-4">
+    <div className="w-full h-fit flex flex-col gap-2 px-4 sticky">
       {
         items.map(item => {
-
+          let title = item.title
+          if (item.title === 'home') title = ''
+          if (item.title === 'profile') title = profile.slug
           return (
             <NavLink
-              to={`/${item.title === 'home' ? '' : item.title}`}
+              to={`/${title}`}
 
               key={item.title}
               className={

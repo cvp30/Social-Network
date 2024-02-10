@@ -59,7 +59,7 @@ export const typeDefs = gql`
 export const resolvers = {
   Query: {
     GetPostsFromUser: async (_, args, context) => {
-      if (!context.currentUser) throw new AuthenticationError('Not Authenticated')
+      // if (!context.currentUser) throw new AuthenticationError('Not Authenticated')
 
       try {
         const { slug } = args;
@@ -71,7 +71,7 @@ export const resolvers = {
           "userId": user.id
         })
           .populate("userId")
-
+          .sort({ createdAt: -1 })
       } catch (error) {
         throw new Error(error.message)
       }

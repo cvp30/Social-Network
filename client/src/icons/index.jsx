@@ -147,7 +147,25 @@ export const GithubLogo = (props) => {
   )
 }
 
+export const Linkedin = () => {
+  return (
+    <svg width={22} height={22} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z" />
+      <path d="M8 11v5" />
+      <path d="M8 8v.01" />
+      <path d="M12 16v-5" />
+      <path d="M16 16v-3a2 2 0 0 0-4 0" />
+    </svg>
+  )
+}
 
+export const Website = () => {
+  return (
+    <svg width={22} height={22} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 1.5A10.5 10.5 0 1 0 22.5 12 10.512 10.512 0 0 0 12 1.5ZM3.015 12.296l1.004.334 1.231 1.847v.962c0 .2.079.39.22.53L7.5 18v1.782a8.996 8.996 0 0 1-4.485-7.486ZM12 21a8.982 8.982 0 0 1-1.929-.213L10.5 19.5l1.354-3.384a.751.751 0 0 0-.073-.694l-1.058-1.588a.75.75 0 0 0-.624-.334H6.4l-.936-1.405L7.061 10.5H8.25V12h1.5V9.95l2.901-5.078-1.302-.744-.641 1.122H8.65l-.814-1.222A8.896 8.896 0 0 1 15 3.525V6a.75.75 0 0 0 .75.75h1.099a.75.75 0 0 0 .624-.334l.657-.987a9.026 9.026 0 0 1 2.04 2.821h-3.055a.75.75 0 0 0-.735.603l-.542 3.353a.75.75 0 0 0 .405.79l2.507 1.254.514 3.042A8.985 8.985 0 0 1 12 21Z" />
+    </svg>
+  )
+}
 
 export const LogOut = () => {
   return (
@@ -293,6 +311,16 @@ export const Photo = () => {
   )
 }
 
+export const AddPhoto = () => {
+  return (
+    <svg width={22} height={22} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path fillRule="evenodd" d="M10.75 5a1 1 0 0 0-.8.4L8.9 6.8A3 3 0 0 1 6.5 8H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 1 1 2 0v7a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h1.5a1 1 0 0 0 .8-.4l1.05-1.4a3 3 0 0 1 2.4-1.2h2.5a1 1 0 1 1 0 2h-2.5Z" clipRule="evenodd" />
+      <path fillRule="evenodd" d="M18.5 3a1 1 0 0 1 1 1v1.5H21a1 1 0 1 1 0 2h-1.5V9a1 1 0 1 1-2 0V7.5H16a1 1 0 1 1 0-2h1.5V4a1 1 0 0 1 1-1Z" clipRule="evenodd" />
+      <path fillRule="evenodd" d="M12 10a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" clipRule="evenodd" />
+    </svg>
+  )
+}
+
 export const Feeling = () => {
   return (
     <svg width={28} height={28} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -355,7 +383,7 @@ export const Upload = () => {
   )
 }
 
-export const LinkUrl = () => {
+export const LinkWebsite = () => {
   return (
     <svg width={20} height={20} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path fillRule="evenodd" d="M15.103 5.503a2.4 2.4 0 1 1 3.394 3.394l-3.6 3.6a2.4 2.4 0 0 1-3.394 0 1.2 1.2 0 0 0-1.697 1.697 4.8 4.8 0 0 0 6.788 0l3.6-3.6a4.8 4.8 0 0 0-6.788-6.788l-1.8 1.8a1.2 1.2 0 1 0 1.697 1.697l1.8-1.8Zm-6 6a2.4 2.4 0 0 1 3.394 0 1.2 1.2 0 1 0 1.697-1.697 4.8 4.8 0 0 0-6.788 0l-3.6 3.6a4.8 4.8 0 1 0 6.788 6.788l1.8-1.8a1.2 1.2 0 1 0-1.697-1.697l-1.8 1.8a2.399 2.399 0 1 1-3.394-3.394l3.6-3.6Z" clipRule="evenodd" />
@@ -375,6 +403,14 @@ export const Check = () => {
   return (
     <svg width={10} height={10} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path fillRule="evenodd" d="M20.048 6.352a1.2 1.2 0 0 1 0 1.696l-9.6 9.6a1.2 1.2 0 0 1-1.696 0l-4.8-4.8a1.2 1.2 0 0 1 1.696-1.696L9.6 15.103l8.752-8.751a1.2 1.2 0 0 1 1.696 0Z" clipRule="evenodd" />
+    </svg>
+  )
+}
+
+export const Dots = () => {
+  return (
+    <svg width={22} height={22} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7.2 12a2.4 2.4 0 1 1-4.8 0 2.4 2.4 0 0 1 4.8 0Zm7.2 0a2.4 2.4 0 1 1-4.8 0 2.4 2.4 0 0 1 4.8 0Zm4.8 2.4a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8Z" />
     </svg>
   )
 }

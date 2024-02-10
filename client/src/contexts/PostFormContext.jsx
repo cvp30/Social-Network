@@ -2,14 +2,17 @@ import { useFormik } from 'formik'
 import PropTypes from 'prop-types'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { PostFormSchema } from '../schemas/PostFormSchema'
-import axios from "axios"
 import { useMutation } from '@apollo/client'
 import { CREATE_POST } from '../graphql/CreatePost'
 import { GET_ALL_POSTS } from '../graphql/GetAllPosts'
+import { uploadImage } from '../services/firebase'
+import { useUser } from '../hooks/useUser'
 
 const PostFormContext = createContext()
 
 export const PostFormContextProvider = ({ children }) => {
+
+  const { profile } = useUser()
 
   const [RegisterPost] = useMutation(CREATE_POST, {
     onError: (error) => {
@@ -23,37 +26,34 @@ export const PostFormContextProvider = ({ children }) => {
 
   const initialValues = {
     content: '',
-    image: '',
+    image: [],
     privacy: 'PUBLIC',
   }
 
   const postFormik = useFormik({
     initialValues,
-    validationSchema: PostFormSchema,
+    // validationSchema: PostFormSchema,
     onSubmit: async (values, { resetForm }) => {
-      let input = {}
-      if (values.content.trim().length) input.content = values.content
+      console.log(values.image)
+      // let input = {}
+      // if (values.content.trim().length) input.content = values.content
 
-      if (values.image.length !== 0) {
-        try {
-          const image = values.image
-          const formData = new FormData()
-          formData.append('file', image)
-          formData.append('upload_preset', "oozsq136")
-          const res = await axios.post("https://api.cloudinary.com/v1_1/dvqq04czh/image/upload", formData)
+      // if (values.image.length !== 0) {
+      //   try {
+      //     const image = values.image
 
-          const photoURL = res.data.secure_url
-          input = { ...input, image: photoURL }
+      //     const photoURL = await uploadImage(profile?.id, image)
 
-        } catch (error) {
-          console.log(error)
-        }
-      }
+      //     input = { ...input, image: photoURL }
 
-      input = { ...input, privacy: values.privacy }
-      RegisterPost({ variables: input })
-      resetForm()
+      //   } catch (error) {
+      //     console.log(error)
+      //   }
+      // }
 
+      // input = { ...input, privacy: values.privacy }
+      // RegisterPost({ variables: input })
+      // resetForm()
     }
   })
 
@@ -73,7 +73,7 @@ export const PostFormContextProvider = ({ children }) => {
   return (
     <PostFormContext.Provider value={{
       postFormik,
-      isIcon
+      isIcon,
     }}>
       {children}
     </PostFormContext.Provider>

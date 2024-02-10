@@ -26,7 +26,13 @@ const userSchema = new mongoose.Schema({
   coverPhoto: {
     type: String,
   },
-  website: {
+  github: {
+    type: String,
+  },
+  linkedin: {
+    type: String,
+  },
+  portfolio: {
     type: String,
   },
   bio: {
@@ -35,6 +41,10 @@ const userSchema = new mongoose.Schema({
   },
   location: {
     type: String,
+  },
+  status: {
+    type: Boolean,
+    default: true,
   }
 })
 

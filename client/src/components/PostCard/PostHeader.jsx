@@ -6,11 +6,9 @@ const PostHeader = ({ username, photoURL, slug, date, isFollower }) => {
     <header className='w-full h-fit flex justify-between items-center'>
       <User
         name={(
-          <div className='flex items-center gap-2'>
-            <p className="text-base font-semibold">
-              {username}
-            </p>
-          </div>
+          <p className="text-base font-semibold">
+            {username}
+          </p>
         )}
         description={(
           <p className="text-sm text-darkSilver">@{slug} · {date}</p>

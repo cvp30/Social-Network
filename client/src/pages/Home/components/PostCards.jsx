@@ -14,6 +14,7 @@ const PostCards = () => {
       {
         data.GetAllPosts.map(post => {
           return (
+
             <PostCard
               key={post.id}
               photoURL={post.userId.photoURL}
@@ -24,6 +25,7 @@ const PostCards = () => {
               description={post.content}
               photoPost={post.image}
             />
+
           )
         })
       }

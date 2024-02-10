@@ -10,77 +10,11 @@ const Contacts = () => {
       description: "frontend developer",
       image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
       state: true,
-    },
-    {
-      name: "carlos",
-      description: "frontend developer",
-      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-      state: false,
-    },
-    {
-      name: "carlos",
-      description: "frontend developer",
-      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-      state: false,
-    },
-    {
-      name: "carlos david valer pacompia",
-      description: "frontend developer",
-      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-      state: true,
-    },
-    {
-      name: "carlos",
-      description: "frontend developer",
-      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-      state: true,
-    },
-    {
-      name: "carlos",
-      description: "frontend developer",
-      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-      state: true,
-    },
-    {
-      name: "carlos david valer pacompia",
-      description: "frontend developer",
-      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-      state: true,
-    },
-    {
-      name: "carlos",
-      description: "frontend developer",
-      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-      state: true,
-    },
-    {
-      name: "carlos",
-      description: "frontend developer",
-      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-      state: true,
-    },
-    {
-      name: "carlos david valer pacompia",
-      description: "frontend developer",
-      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-      state: true,
-    },
-    {
-      name: "carlos",
-      description: "frontend developer",
-      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-      state: true,
-    },
-    {
-      name: "carlos",
-      description: "frontend developer",
-      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-      state: true,
-    },
+    }
   ]
 
   return (
-    <div className="w-full contacts flex flex-col gap-3 sticky top-24 overflow-y-auto overscroll-contain px-4">
+    <div className="w-full contacts flex flex-col gap-3 sticky top-[4.5rem] overflow-y-auto overscroll-contain px-4">
       <Input
         placeholder="Search friends..."
         size="lg"
@@ -88,6 +22,10 @@ const Contacts = () => {
         startContent={<Search />}
         type="search"
         radius="md"
+        classNames={{
+          inputWrapper: "pr-0 border-ModuleItem",
+          input: "rounded-r-xl"
+        }}
       />
 
       <p className="font-semibold">Friends</p>

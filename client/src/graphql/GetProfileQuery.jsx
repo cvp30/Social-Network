@@ -9,7 +9,9 @@ export const GET_PROFILE = gql`
       username
       photoURL
       coverPhoto
-      website
+      linkedin
+      github
+      portfolio
       bio
       location
     }

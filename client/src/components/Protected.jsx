@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import { Navigate } from "react-router-dom"
-import { useProfile } from '../hooks/useProfile';
+import { useUser } from '../hooks/useUser';
 import Spinner from './Spinner';
 // import { UserAuth } from '../contexts/AuthenticationContext';
 
 
 const Protected = ({ children }) => {
 
-  const { loading } = useProfile();
+  const { loading } = useUser();
   // const { token } = UserAuth()
   const sessionToken = localStorage.getItem('Session')
 

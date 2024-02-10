@@ -1,7 +1,8 @@
 import { gql } from "apollo-server-express"
 import { typeDefs as UserTypeDefs, resolvers as UserResolvers } from "./User.js"
-import { typeDefs as FriendshipTypeDefs, resolvers as FriendshipResolvers } from "./Followers.js"
+import { typeDefs as FollowersTypeDefs, resolvers as FollowersResolvers } from "./Followers.js"
 import { typeDefs as PostTypeDefs, resolvers as PostResolvers } from "./Post.js"
+import { typedefs as FriendshipTypedefs, resolvers as FriendshipResolvers } from "./Friendship.js"
 
 const RootTypedefs = gql`
   type Query{
@@ -13,6 +14,6 @@ const RootTypedefs = gql`
     }
 `
 
-export const typeDefs = [RootTypedefs, UserTypeDefs, FriendshipTypeDefs, PostTypeDefs]
+export const typeDefs = [RootTypedefs, UserTypeDefs, FollowersTypeDefs, PostTypeDefs, FriendshipTypedefs]
 
-export const resolvers = [UserResolvers, FriendshipResolvers, PostResolvers]
+export const resolvers = [UserResolvers, FollowersResolvers, PostResolvers, FriendshipResolvers]

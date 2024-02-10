@@ -1,7 +1,7 @@
 import { Button } from "@nextui-org/react"
-import { Feeling, Video } from "../../icons"
+import { Feeling, Video } from "../../../../icons";
 import PhotoButton from './Buttons/PhotoButton';
-import { PostContext } from '../../contexts/PostFormContext';
+import { PostContext } from "../../../../contexts/PostFormContext";
 
 
 const ButtonsGroup = () => {

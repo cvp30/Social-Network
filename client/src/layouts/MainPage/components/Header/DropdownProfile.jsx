@@ -1,13 +1,16 @@
 import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, User } from "@nextui-org/react"
 import { Link, useNavigate } from "react-router-dom"
-import { useProfile } from "../../../../hooks/useProfile"
+import { useUser } from "../../../../hooks/useUser"
 import { useTheme } from "../../../../hooks/useTheme"
 import { LogOut, Moon, Settings, Sun } from "../../../../icons"
+import AvatarUser from "../../../../assets/avatar.jpg"
+import { useApolloClient } from "@apollo/client"
 
 const DropdownProfile = () => {
 
   const navigate = useNavigate()
-  const { client, profile } = useProfile()
+  const { profile } = useUser()
+  const client = useApolloClient()
   const { isDarkMode, onChangeTheme } = useTheme()
 
   const handleSignOut = async () => {
@@ -25,7 +28,7 @@ const DropdownProfile = () => {
           className="transition-transform"
           color="primary"
           name={profile.username}
-          src={profile.photoURL}
+          src={profile.photoURL || AvatarUser}
         />
       </DropdownTrigger>
       <DropdownMenu aria-label="Profile Actions" variant="flat" color="primary">

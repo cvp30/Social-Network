@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { Button } from "@nextui-org/react"
-import { Photo } from "../../../icons"
 import { useRef } from 'react';
-import { PostContext } from '../../../contexts/PostFormContext';
+import { Photo } from '../../../../../icons';
+import { PostContext } from '../../../../../contexts/PostFormContext';
 
 
 const PhotoButton = ({ isIcon }) => {
@@ -15,7 +15,12 @@ const PhotoButton = ({ isIcon }) => {
   }
 
   const handleChangeFile = (e) => {
-    postFormik.setFieldValue('image', e.target.files[0])
+    const { files } = e.target
+
+    if (files.length) {
+      const values = Object.values(files)
+      postFormik.setFieldValue('image', [...postFormik.values.image, ...values])
+    }
   }
 
   return (
@@ -37,7 +42,7 @@ const PhotoButton = ({ isIcon }) => {
         className='hidden'
         ref={fileInputRef}
         onChange={handleChangeFile}
-        // multiple
+        multiple
         accept='image/*'
       />
     </>

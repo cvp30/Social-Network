@@ -1,9 +1,8 @@
-import { Image } from "@nextui-org/react"
 import { useState } from "react"
 import PropTypes from 'prop-types'
 
 
-const PreviewImage = ({ file }) => {
+const ImagePreview = ({ file }) => {
   const [prev, setPrev] = useState({})
 
   if (file) {
@@ -14,15 +13,12 @@ const PreviewImage = ({ file }) => {
     }
   }
   return (
-    <Image
-      width={370}
-      src={prev}
-    />
+    <img className="rounded-xl" src={prev} alt="" />
   )
 }
 
-PreviewImage.propTypes = {
+ImagePreview.propTypes = {
   file: PropTypes.any,
 }
 
-export default PreviewImage
+export default ImagePreview

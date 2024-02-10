@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Logo from "../../components/Logo";
 import Form from "./components/Form"
-import { useProfile } from "../../hooks/useProfile";
+import { useUser } from "../../hooks/useUser";
 import { Navigate } from "react-router-dom";
 import { Navbar } from "@nextui-org/react";
 import { Moon, Sun } from "../../icons";
@@ -12,7 +12,7 @@ export const Authentication = () => {
 
   const [isSignIn, setIsSignIn] = useState(true);
 
-  const { profile } = useProfile()
+  const { profile } = useUser()
   const { isDarkMode, onChangeTheme } = useTheme()
   const sessionToken = localStorage.getItem('Session')
 

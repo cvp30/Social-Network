@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
 import { useFormik } from "formik";
 import { SignInUserSchema } from "../schemas/SignInUserSchema"
 import { SignUpUserSchema } from "../schemas/SignUpUserSchema";
@@ -48,7 +47,6 @@ const Form = ({ isSignIn }) => {
       navigate('/')
     }
   })
-  console.log(userFormik.errors)
 
   useEffect(() => {
     userFormik.setValues(initialValues)

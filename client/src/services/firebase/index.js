@@ -1,4 +1,6 @@
-import { Auth } from "./config";
+import { Auth, Storage } from "./config";
+import { v4 } from "uuid"
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import {
   GithubAuthProvider,
   GoogleAuthProvider,
@@ -20,4 +22,15 @@ export const githubSignIn = async () => {
 
 export const SignOut = async () => {
   await signOut(Auth);
+}
+
+export const uploadImage = async (userID, file) => {
+  const storageRef = ref(Storage, `${userID}/${v4()}`)
+  await uploadBytes(storageRef, file)
+
+  return await getDownloadURL(storageRef)
+}
+
+export const deleteImage = async (userID, file) => {
+
 }

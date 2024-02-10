@@ -9,6 +9,14 @@ export default {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      'mid': '1320px',
+      '2xl': '1536px',
+    },
     extend: {
       spacing: {
         '120': '30rem',
@@ -16,15 +24,15 @@ export default {
       }
     },
     colors: {
-      'darkSilver': '#9d9d9d',
-      // 'primary': '#0092ca',
+      'darkSilver': '#8b98a5',
+
       'lightWhite': 'white',
       'white': '#eeeff2',
       'bluee': '#0092ca',
       'principal': '#191e27',
-      // 'darkButton': '#2A343E',
+
       'silver': '#dcdfe4',
-      // 'secondary': '#212833',
+
       'darkBorder': '#4b5771',
       'transparent': '#00000000',
     }
@@ -53,10 +61,9 @@ export default {
           }
         },
         dark: {
-          // E7E7E8
           colors: {
             background: '#15202B',
-            secondary: '#212833',
+            secondary: '#1E2732',
             primary: {
               DEFAULT: '#0092ca',
             },

@@ -2,9 +2,13 @@ import { gql } from "@apollo/client";
 
 export const UPDATE_PROFILE_DATA = gql`
   mutation UpdateProfileData($input:ProfileData){
-    UpdateProfileData (input: $input){
+    UpdateProfile (input: $input){
       username
-      website
+      photoURL
+      coverPhoto
+      portfolio
+      github
+      linkedin
       bio
       location
     }

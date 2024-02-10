@@ -12,7 +12,7 @@ const Header = () => {
           maxWidth="2xl"
           isBlurred
           className="w-full flex justify-between mx-0"
-          height='5rem'
+          height='4rem'
         >
           <NavbarBrand>
             <Logo />
@@ -27,6 +27,10 @@ const Header = () => {
                 startContent={<Search />}
                 type="search"
                 radius="md"
+                classNames={{
+                  inputWrapper: "pr-0 border-ModuleItem",
+                  input: "rounded-r-xl"
+                }}
               />
             </NavbarItem>
           </NavbarContent>

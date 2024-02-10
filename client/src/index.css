@@ -30,7 +30,8 @@
     /* padding: 0rem .5rem; */
     box-sizing: border-box;
     font-size: .9375rem;
-    /* letter-spacing: 0.03rem; */
+    letter-spacing: 0.02rem;
+    font-size: 15px;
   }
 
   .dark {
