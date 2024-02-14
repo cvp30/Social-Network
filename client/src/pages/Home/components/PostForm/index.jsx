@@ -18,7 +18,7 @@ const PostForm = () => {
   return (
     <form
       onSubmit={postFormik?.handleSubmit}
-      className="bg-default flex flex-col gap-4  rounded-xl w-full h-fit p-3"
+      className="bg-default flex flex-col gap-4  rounded-xl w-full h-fit p-3 shadow-medium"
     >
       <div className={`h-fit flex items-center gap-2 flex-col`}>
         <div className="w-full h-16 flex justify-between items-center gap-2">

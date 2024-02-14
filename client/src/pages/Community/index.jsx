@@ -5,7 +5,7 @@ const Community = () => {
 
   return (
     <div
-      className="w-full h-fit flex flex-col gap-3 items-center"
+      className="w-full h-full flex flex-col gap-3 items-center"
     >
       <ButtonsGroup />
 

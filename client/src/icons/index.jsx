@@ -194,6 +194,23 @@ export const ArrowDown = (props) => {
   )
 }
 
+
+export const ArrowUp = () => {
+  return (
+    <svg width={24} height={24} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5.25 15.375 12 8.625l6.75 6.75" />
+    </svg>
+  )
+}
+
+export const ArrowLeft = () => {
+  return (
+    <svg width={24} height={24} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15.375 5.25 8.625 12l6.75 6.75" />
+    </svg>
+  )
+}
+
 export const Search = () => {
   return (
     <svg width={24} height={24} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

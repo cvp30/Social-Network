@@ -12,7 +12,7 @@ const Profile = () => {
 
   return (
     <DataProfileContextProvider slug={userSlug}>
-      <section className="w-full h-fit flex flex-col gap-6 md:px-4">
+      <section className="w-full h-fit flex flex-col gap-6 md:p">
         <ProfileHeader />
 
         <div className="w-full h-fit flex flex-col md:flex-row justify-evenly items-center md:items-start gap-4 md:p-4 rounded-xl bg-secondary">

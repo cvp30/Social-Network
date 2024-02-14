@@ -8,7 +8,7 @@ const Home = () => {
 
   return (
     <main
-      className="w-full h-fit   flex justify-center gap-4"
+      className="w-full h-fit flex justify-evenly gap-4"
     >
       <div className="w-[33rem] h-fit flex flex-col gap-4">
         <PostFormContextProvider>
@@ -18,10 +18,10 @@ const Home = () => {
         <PostCards />
       </div>
 
-      {/* <div className="w-80 h-fit hidden xl:flex flex-col items-center gap-4">
+      <div className="w-80 h-fit hidden xl:flex flex-col items-center gap-4">
         <RecommendedUsers />
         <RecentEvents />
-      </div> */}
+      </div>
     </main>
   )
 }

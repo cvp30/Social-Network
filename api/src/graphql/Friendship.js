@@ -9,7 +9,9 @@ export const typedefs = gql`
     _id: ID!
     username: String!
     bio: String
+    slug: String
     photoURL: String
+    status: Boolean
   }
   type Friendship {
     fromUser: ID!
@@ -57,7 +59,7 @@ export const resolvers = {
           ]
         }).populate({
           path: 'fromUser toUser',
-          select: '_id username bio photoURL'
+          select: '_id username bio photoURL status slug'
         })
 
         const outputFriends = friends.map(user => {

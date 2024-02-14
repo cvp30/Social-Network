@@ -1,11 +1,13 @@
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import ModulesSidebar from "./components/ModulesSidebar";
+import FriendsList from "../../components/FriendsList";
+import TabList from "../../components/FriendsList/TabList";
 
 const MainPage = () => {
 
   return (
-    <nav className=" flex flex-col gap-2 w-full h-full">
+    <nav className=" flex flex-col gap-2 w-full h-full max-w-screen-2xl">
 
       <Header />
 
@@ -14,10 +16,15 @@ const MainPage = () => {
           <ModulesSidebar />
         </nav>
 
-        <div className="grow h-fit">
+        <div className="grow h-fit bg-secondary p-4 rounded-xl">
           <Outlet />
         </div>
       </div>
+
+      <FriendsList />
+
+      <TabList />
+
     </nav>
   )
 }

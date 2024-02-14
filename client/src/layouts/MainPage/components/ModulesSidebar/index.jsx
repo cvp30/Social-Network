@@ -6,7 +6,7 @@ const ModulesSidebar = () => {
   const { profile } = useUser()
 
   return (
-    <div className="w-full h-fit flex flex-col gap-2 px-4 sticky">
+    <div className="w-full h-full flex flex-col gap-2 px-4 sticky">
       {
         items.map(item => {
           let title = item.title
